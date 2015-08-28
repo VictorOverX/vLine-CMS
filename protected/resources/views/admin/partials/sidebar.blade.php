@@ -14,7 +14,7 @@
                         </div>
                      </div>
                      <div class="user-block-info">
-                        <span class="user-block-name">Olá Victor</span>
+                        <span class="user-block-name">Olá {{ \Auth::user()->name }}</span>
                         <span class="user-block-role">Administrador</span>
                      </div>
                   </div>

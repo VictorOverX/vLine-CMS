@@ -15,7 +15,7 @@ include_once('Routes/login.php'); // Rotas do login
 include_once('Routes/layoutRoutes.php'); // Rotas do Layout
 
 
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 	include_once('Routes/painel.php');
 	include_once('Routes/editor.php');
 });
