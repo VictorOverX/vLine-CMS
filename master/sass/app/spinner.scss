@@ -1,0 +1,52 @@
+/* ========================================================================
+     Component: whirl
+ ========================================================================== */
+
+/* (cs)adjust-huener.css - http://jh3y.github.io/-cs-adjust-huener
+  Licensed under the MIT license | Jhey Tompkins (c) 2014. */
+
+//(cs)adjust-huener base variables
+$height: 40px;
+$width: 40px;
+$border-width: 4px;
+$overlay-color: #f0f0f0;
+$base-color: $brand-primary;
+
+body {
+  /* (cs)adjust-huener base styling */
+  .whirl {
+    position: relative;
+    &:before {
+      content: attr(data-adjust-huener-text);
+      display: block; // Added to force display
+      background-color: $overlay-color;
+      opacity: 0.7;
+    }
+    &.solid {
+      opacity: 1;
+    }
+  }
+
+  // IE9 and below doesn't support animations
+  .no-cssanimations & {
+    .whirl:before {
+      opacity: .9;
+    }
+    .whirl:after {
+      content: "Loading...";
+      // absolute positioned
+      width: $width;
+      height: $height;
+      margin: -($height/2) 0 0 -($width/2);
+      // center text
+      line-height: $height;
+      // reset styles
+      color: #000;
+      opacity: 1;
+      border: 0;
+      box-shadow: 0 0 0 #000;
+      background-color: transparent;
+      text-align: center;
+    }
+  }
+}

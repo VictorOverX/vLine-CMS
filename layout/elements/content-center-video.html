@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Content Center Video Background</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-Equiv="Cache-Control" Content="cache">
+	<meta http-Equiv="Pragma" Content="cache">
+	<meta http-Equiv="Expires" Content="1000">
+
+    <!-- Loading Bootstrap Styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+	
+    <!-- Loading Elements Styles -->   
+    <link href="css/style.css" rel="stylesheet">
+	   
+    <!-- Loading Font Styles -->
+    <link href="css/iconfont-style.css" rel="stylesheet">
+	
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="scripts/html5shiv.js"></script>
+      <script src="scripts/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    
+    <div id="wrap">
+    
+    	<!-- CONTENT CENTER VIDEO BLOCK -->
+		<section id="content-center-video" class="text-center bg-color1 dark-bg double-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<h2 class="big-title">High Quality and Attention to Detail make <b>our products Better</b></h2>
+						<p class="desc-text">In our work we try to use only the most modern, convenient and interesting solutions. <br>We want the template you downloaded look unique and new for such a long time as it is possible. </p>
+					</div>
+				</div>	
+			</div>
+			<div class="video-bg"></div>
+		</section>
+    
+    </div><!-- /#wrap -->
+	
+	<!-- JavaScript --> 
+	<script src="scripts/jquery-1.11.2.min.js"></script> 
+	<script src="scripts/video.js"></script>
+	<script src="scripts/bigvideo.js"></script>
+	<script>
+		$(function() {
+			var BV = new $.BigVideo({container: $('.video-bg'), useFlashForFirefox:false});
+			BV.init();
+			if(navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|IEMobile/i)) {
+					BV.show('images/video_gag.jpg');
+			} else{
+				if (!!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) {
+					BV.show('video/video_bg.ogv', {doLoop:true, ambient:true});
+				} else{
+					BV.show('video/video_bg.mp4', {doLoop:true, ambient:true, altSource:'video/video_bg.ogv'});
+				}
+				BV.getPlayer().on('loadedmetadata', function(){
+					$('#big-video-wrap video').fadeIn('slow');
+				});
+			}
+		});
+	</script>
+
+</body>
+</html>

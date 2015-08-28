@@ -1,0 +1,558 @@
+extends ../_layout
+
+block active
+  - sidebar_active = 'icons-weather.html'
+
+block content
+  h3 Weather Icons
+    small Static and animated weather themed icons, ready to be dropped right into your project. 
+
+  .row
+    .col-sm-12
+        h4.page-header.mt0 Skycons
+      
+        - var types = ['clear-day', 'clear-night', 'partly-cloudy-day', 'partly-cloudy-night', 'cloudy', 'rain', 'sleet', 'snow', 'wind', 'fog']
+        .row
+          - each t in types
+            .col-xs-3
+              div.center-block(data-skycon="#{t}", data-color="#888", data-width="60", data-height="60")
+              p: code #{t}
+  .row
+    .col-sm-12
+      h4.page-header New v1.2 
+  .row
+    .col-sm-4
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-smoke
+        .col-xs-11 wi-smoke
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-dust
+        .col-xs-11 wi-dust
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-snow-wind
+        .col-xs-11 wi-snow-wind
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-snow-wind
+        .col-xs-11 wi-day-snow-wind
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-snow-wind
+        .col-xs-11 wi-night-snow-wind
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-alt-snow-wind
+        .col-xs-11 wi-night-alt-snow-wind
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-sleet-storm
+        .col-xs-11 wi-day-sleet-storm
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-sleet-storm
+        .col-xs-11 wi-night-sleet-storm
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-alt-sleet-storm
+        .col-xs-11 wi-night-alt-sleet-storm
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-snow-thunderstorm
+        .col-xs-11 wi-day-snow-thunderstorm
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-snow-thunderstorm
+        .col-xs-11 wi-night-snow-thunderstorm
+    .col-sm-4
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-alt-snow-thunderstorm
+        .col-xs-11 wi-night-alt-snow-thunderstorm
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-solar-eclipse
+        .col-xs-11 wi-solar-eclipse
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-lunar-eclipse
+        .col-xs-11 wi-lunar-eclipse
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-meteor
+        .col-xs-11 wi-meteor
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-hot
+        .col-xs-11 wi-hot
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-hurricane
+        .col-xs-11 wi-hurricane          
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-smog
+        .col-xs-11 wi-smog
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-alien
+        .col-xs-11 wi-alien
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-snowflake-cold
+        .col-xs-11 wi-snowflake-cold
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-stars
+        .col-xs-11 wi-stars
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-partly-cloudy
+        .col-xs-11 night-partly-cloudy
+    .col-sm-4
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-moon-full
+        .col-xs-11 wi-moon-full
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-moon-waxing-gibbous
+        .col-xs-11 wi-moon-waxing-gibbous
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-moon-waxing-quarter
+        .col-xs-11 wi-moon-waxing-quarter
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-moon-waxing-crescent
+        .col-xs-11 wi-moon-waxing-crescent
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-moon-young
+        .col-xs-11 wi-moon-young
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-moon-new
+        .col-xs-11 wi-moon-new
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-moon-old
+        .col-xs-11 wi-moon-old
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-moon-waning-crescent
+        .col-xs-11 wi-moon-waning-crescent
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-moon-waning-quarter
+        .col-xs-11 wi-moon-waning-quarter
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-moon-waning-gibbous
+        .col-xs-11 wi-moon-waning-gibbous
+  .row
+    .col-sm-12
+      h4.page-header Day / Sunny
+  .row
+    .col-sm-4
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-cloudy-gusts
+        .col-xs-11 wi-day-cloudy-gusts
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-cloudy-windy
+        .col-xs-11 wi-day-cloudy-windy
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-cloudy
+        .col-xs-11 wi-day-cloudy
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-fog
+        .col-xs-11 wi-day-fog
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-hail
+        .col-xs-11 wi-day-hail
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-lightning
+        .col-xs-11 wi-day-lightning
+    .col-sm-4
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-rain-mix
+        .col-xs-11 wi-day-rain-mix
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-rain-wind
+        .col-xs-11 wi-day-rain-wind
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-rain
+        .col-xs-11 wi-day-rain
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-showers
+        .col-xs-11 wi-day-showers
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-snow
+        .col-xs-11 wi-day-snow
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-sprinkle
+        .col-xs-11 wi-day-sprinkle
+    .col-sm-4
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-sunny-overcast
+        .col-xs-11 wi-day-sunny-overcast
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-sunny
+        .col-xs-11 wi-day-sunny
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-storm-showers
+        .col-xs-11 wi-day-storm-showers
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-day-thunderstorm
+        .col-xs-11 wi-day-thunderstorm
+  .row
+    .col-sm-12
+      h4.page-header Neutral / Cloudy
+  .row
+    .col-sm-4
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-cloudy-gusts
+        .col-xs-11 wi-cloudy-gusts
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-cloudy-windy
+        .col-xs-11 wi-cloudy-windy
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-cloudy
+        .col-xs-11 wi-cloudy
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-fog
+        .col-xs-11 wi-fog
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-hail
+        .col-xs-11 wi-hail
+    .col-sm-4
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-lightning
+        .col-xs-11 wi-lightning
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-rain-mix
+        .col-xs-11 wi-rain-mix
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-rain-wind
+        .col-xs-11 wi-rain-wind
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-rain
+        .col-xs-11 wi-rain
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-showers
+        .col-xs-11 wi-showers
+    .col-sm-4
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-snow
+        .col-xs-11 wi-snow
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-sprinkle
+        .col-xs-11 wi-sprinkle
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-storm-showers
+        .col-xs-11 wi-storm-showers
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-thunderstorm
+        .col-xs-11 wi-thunderstorm
+  .row
+    .col-sm-12
+      h4.page-header Night / Moons
+  .row
+    .col-sm-4
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-alt-cloudy-gusts
+        .col-xs-11 wi-night-alt-cloudy-gusts
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-alt-cloudy-windy
+        .col-xs-11 wi-night-alt-cloudy-windy
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-alt-hail
+        .col-xs-11 wi-night-alt-hail
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-alt-lightning
+        .col-xs-11 wi-night-alt-lightning
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-alt-rain-mix
+        .col-xs-11 wi-night-alt-rain-mix
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-alt-rain-wind
+        .col-xs-11 wi-night-alt-rain-wind
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-alt-rain
+        .col-xs-11 wi-night-alt-rain
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-alt-showers
+        .col-xs-11 wi-night-alt-showers
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-alt-snow
+        .col-xs-11 wi-night-alt-snow
+    .col-sm-4
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-alt-sprinkle
+        .col-xs-11 wi-night-alt-sprinkle
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-alt-storm-showers
+        .col-xs-11 wi-night-alt-storm-showers
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-alt-thunderstorm
+        .col-xs-11 wi-night-alt-thunderstorm
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-clear
+        .col-xs-11 wi-night-clear
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-cloudy-gusts
+        .col-xs-11 wi-night-cloudy-gusts
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-cloudy-windy
+        .col-xs-11 wi-night-cloudy-windy
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-cloudy
+        .col-xs-11 wi-night-cloudy
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-hail
+        .col-xs-11 wi-night-hail
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-lightning
+        .col-xs-11 wi-night-lightning
+    .col-sm-4
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-rain-mix
+        .col-xs-11 wi-night-rain-mix
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-rain-wind
+        .col-xs-11 wi-night-rain-wind
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-rain
+        .col-xs-11 wi-night-rain
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-showers
+        .col-xs-11 wi-night-showers
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-snow
+        .col-xs-11 wi-night-snow
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-sprinkle
+        .col-xs-11 wi-night-sprinkle
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-storm-showers
+        .col-xs-11 wi-night-storm-showers
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-thunderstorm
+        .col-xs-11 wi-night-thunderstorm
+  .row
+    .col-sm-12
+      h4.page-header Miscellaneous Weather 
+  .row
+    .col-sm-4
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-celsius
+        .col-xs-11 wi-celsius
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-cloud-down
+        .col-xs-11 wi-cloud-down
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-cloud-refresh
+        .col-xs-11 wi-cloud-refresh
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-cloud-up
+        .col-xs-11 wi-cloud-up
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-cloud
+        .col-xs-11 wi-cloud
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-degrees
+        .col-xs-11 wi-degrees
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-down-left
+        .col-xs-11 wi-down-left
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-down
+        .col-xs-11 wi-down
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-fahrenheit
+        .col-xs-11 wi-fahrenheit
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-horizon-alt
+        .col-xs-11 wi-horizon-alt
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-horizon
+        .col-xs-11 wi-horizon
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-left
+        .col-xs-11 wi-left
+    .col-sm-4
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-lightning
+        .col-xs-11 wi-lightning
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-night-fog
+        .col-xs-11 wi-night-fog
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-refresh-alt
+        .col-xs-11 wi-refresh-alt
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-refresh
+        .col-xs-11 wi-refresh
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-right
+        .col-xs-11 wi-right
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-sprinkles
+        .col-xs-11 wi-sprinkles
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-strong-wind
+        .col-xs-11 wi-strong-wind
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-sunrise
+        .col-xs-11 wi-sunrise
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-sunset
+        .col-xs-11 wi-sunset
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-thermometer-exterior
+        .col-xs-11 wi-thermometer-exterior
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-thermometer-internal
+        .col-xs-11 wi-thermometer-internal
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-thermometer
+        .col-xs-11 wi-thermometer
+    .col-sm-4
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-tornado
+        .col-xs-11 wi-tornado
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-up-right
+        .col-xs-11 wi-up-right
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-up
+        .col-xs-11 wi-up
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-wind-east
+        .col-xs-11 wi-wind-east
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-wind-north-east
+        .col-xs-11 wi-wind-north-east
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-wind-north-west
+        .col-xs-11 wi-wind-north-west
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-wind-north
+        .col-xs-11 wi-wind-north
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-wind-south-east
+        .col-xs-11 wi-wind-south-east
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-wind-south-west
+        .col-xs-11 wi-wind-south-west
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-wind-south
+        .col-xs-11 wi-wind-south
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-wind-west
+        .col-xs-11 wi-wind-west
+      .row
+        .col-xs-1.text-md
+          i.wi.wi-windy
+        .col-xs-11 wi-windy
+
+
+block vendor_css
+  // WEATHER ICONS
+  link(rel='stylesheet', href='../vendor/weather-icons/css/weather-icons.min.css')
+block vendor_js
+  // SKYCONS
+  script(src='../vendor/skycons/skycons.js')

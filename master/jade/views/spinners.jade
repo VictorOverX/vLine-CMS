@@ -1,0 +1,27 @@
+extends ../_layout
+
+block active
+  - sidebar_active = 'spinners.html'
+
+block content
+  //- this mixin builds panel with a spinner demo
+  mixin spinner-panel-manual(spinnername)
+    // START panel
+    .panel.panel-default
+      .panel-heading
+        = spinnername
+      .panel-body(class="whirl #{spinnername}")
+        p Suspendisse cursus, nisi eu aliquam ultricies, orci augue auctor mi, quis egestas nibh erat vitae justo. 
+    // END panel
+
+  h3 Loading Spinners
+    small Based on modern CSS3 animations with a simple fallback for oldies
+
+
+  - var spinners = ['standard', 'traditional', 'double-up', 'duo', 'sphere', 'sphere vertical', 'bar', 'bar follow', 'line', 'line grow', 'line back-and-forth', 'line back-and-forth grow', 'shadow', 'shadow oval', 'shadow oval right', 'blade', 'ringed', 'helicopter', 'no-overlay']
+  // START row
+  .row
+    - each val in spinners
+      .col-md-3
+        +spinner-panel-manual(val)
+  // END row

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Subscribe Half Right</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-Equiv="Cache-Control" Content="cache">
+	<meta http-Equiv="Pragma" Content="cache">
+	<meta http-Equiv="Expires" Content="1000">
+
+    <!-- Loading Bootstrap Styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+	
+    <!-- Loading Elements Styles -->   
+    <link href="css/style.css" rel="stylesheet"> 
+	
+    <!-- Loading Font Styles -->
+    <link href="css/iconfont-style.css" rel="stylesheet">
+	
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="scripts/html5shiv.js"></script>
+      <script src="scripts/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    
+    <div id="wrap">
+    
+		<!-- SUBSCRIBE HALF RIGHT BLOCK -->
+		<section id="subscribe-half-right" class="bg-color1 dark-bg cover-bg" style="background-image:url(images/bg2.jpg)">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5 col-md-offset-7">
+						<h2 class="title">Subscribe</h2>
+						<form action="scripts/subscribe.php" method="post" id="subscribe_form">
+							<div class="input-group">
+								<input class="form-control" type="email" name="email" id="subscribe_email" placeholder="Enter your email">
+								<div class="input-group-btn">
+									<button type="submit" id="subscribe_submit" data-loading-text="&bull;&bull;&bull;"><i class="icon-envelope"></i></button>
+								</div>
+							</div>
+						</form>
+						<p class="desc-text">Follow us in social networks. You can also subscribe for our news. We are going to provide you with actual and important for you information without spam or fluff.</p>
+					</div>
+				</div>
+			</div>		
+		</section>
+
+    
+    </div><!-- /#wrap -->
+	
+	<!-- JavaScript --> 
+	<script src="scripts/jquery-1.11.2.min.js"></script> 
+	<script src="scripts/bootstrap.min.js"></script> 
+	<script src="scripts/jquery.validate.min.js"></script>
+	<script src="scripts/placeholders.jquery.min.js"></script>
+	<script>
+		$('#subscribe_form').validate({
+			onfocusout: false,
+			onkeyup: false,
+			rules: {
+				email: {
+					required: true,
+					email: true
+				}
+			},
+			errorPlacement: function(error, element) {
+				error.appendTo( element.closest("form"));
+			},
+			messages: {
+				email: {
+					required: "We need your email address to contact you",
+					email: "Please, enter a valid email"
+				}
+			},
+						
+			highlight: function(element) {
+				$(element)
+			},                    
+						
+			success: function(element) {
+				element
+				.text('').addClass('valid')
+			}
+		}); 
+				
+		$('#subscribe_form').submit(function() {
+			$('.error').hide();
+			$('.error').fadeIn();
+			// submit the form
+			if($(this).valid()){
+				$('#subscribe_submit').button('loading'); 
+				var action = $(this).attr('action');
+				$.ajax({
+					url: action,
+					type: 'POST',
+					data: {
+						newsletter_email: $('#subscribe_email').val()
+					},
+					success: function(data) {
+						$('#subscribe_submit').button('reset');
+						
+						//Use modal popups to display messages
+						$('#modalMessage .modal-title').html('<i class="icon icon-envelope-open"></i>' + data);
+						$('#modalMessage').modal('show');
+						
+					},
+					error: function() {
+						$('#subscribe_submit').button('reset');
+						
+						//Use modal popups to display messages
+						$('#modalMessage .modal-title').html('<i class="icon icon-ban"></i>Oops!<br>Something went wrong!');
+						$('#modalMessage').modal('show');
+						
+					}
+				});
+			}
+			return false; 
+		});
+	</script>
+
+</body>
+</html>

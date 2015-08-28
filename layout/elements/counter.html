@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Counter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-Equiv="Cache-Control" Content="cache">
+	<meta http-Equiv="Pragma" Content="cache">
+	<meta http-Equiv="Expires" Content="1000">
+
+    <!-- Loading Bootstrap Styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+	
+    <!-- Loading Elements Styles -->   
+    <link href="css/style.css" rel="stylesheet">
+	   
+    <!-- Loading Font Styles -->
+    <link href="css/iconfont-style.css" rel="stylesheet">
+	
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="scripts/html5shiv.js"></script>
+      <script src="scripts/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    
+    <div id="wrap">
+    
+    	<!-- COUNTER BLOCK -->
+		<section id="counter" class="facts-block bg-color2 dark-bg text-center" >
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<i class="icon icon-download"></i>
+						<h3 class="timer">840</h3>
+						<h4>Downloads</h4>
+					</div>
+					<div class="col-sm-4">
+						<i class="icon icon-wallet2"></i>
+						<h3 class="timer">589</h3>
+						<h4>Sales</h4>
+					</div>
+					<div class="col-sm-4">
+						<i class="icon icon-target2"></i>
+						<h3 class="timer">721</h3>
+						<h4>Happy Clients</h4>
+					</div>
+				</div>
+			</div>
+		</section>
+    
+    </div><!-- /#wrap -->
+
+
+    <!-- JavaScript -->	
+	<script src="scripts/jquery-1.11.2.min.js"></script>
+	<script src="scripts/jquery.counterup.min.js"></script>
+	<script src="scripts/waypoints.min.js"></script>
+	<script>
+		$(window).load(function() {
+			$('.timer').counterUp({
+				delay: 20,
+				time: 2500
+			});
+		})
+	</script>
+</body>
+</html>

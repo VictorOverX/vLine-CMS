@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Intro Center Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-Equiv="Cache-Control" Content="cache">
+	<meta http-Equiv="Pragma" Content="cache">
+	<meta http-Equiv="Expires" Content="1000">
+
+    <!-- Loading Bootstrap Styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+	
+    <!-- Loading Elements Styles -->   
+    <link href="css/style.css" rel="stylesheet"> 
+	
+    <!-- Loading Font Styles -->
+    <link href="css/iconfont-style.css" rel="stylesheet">
+	
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="scripts/html5shiv.js"></script>
+      <script src="scripts/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    
+    <div id="wrap">
+    
+		<!-- INTRO CENTER FORM -->
+		<header id="intro-center-form" class="intro-block cover-bg text-center" style="background-image:url(images/bg10.jpg)" >
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 dark-bg">
+						<div class="slogan">
+							<h1>The Best Start For <b>Your Business</b></h1>
+							<p><b>No fluff. Nothing should lead the visitor away from the main essence of website. <br>There must be just important information.</b></p>
+						</div>
+					</div>
+					<div class="col-md-6 col-md-offset-3">
+						<div class="form-container">
+							<h3 class="title">FREE Consultation</h3>
+							<form action="scripts/contact.php" role="form" id="contact_form">
+								<div class="form-group">
+									<input type="text" class="form-control" id="contact_name" placeholder="Full name" name="name">
+								</div>
+								<div class="form-group">
+									<input type="email" class="form-control" id="contact_email" placeholder="Email Address" name="email">
+								</div>
+								<div class="form-group">
+									<textarea class="form-control" rows="4" placeholder="Your message or question" id="contact_message" name="message"></textarea>
+								</div>
+								<button type="submit" id="contact_submit" data-loading-text="&bull;&bull;&bull;" class="btn btn-lg btn-block btn-primary">Ask</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+    
+    </div><!-- /#wrap -->
+	
+	<!-- JavaScript --> 
+	<script src="scripts/jquery-1.11.2.min.js"></script> 
+	<script src="scripts/bootstrap.min.js"></script>
+	<script src="scripts/jquery.validate.min.js"></script> 
+	<script src="scripts/placeholders.jquery.min.js"></script> 
+	<script>
+		$('#contact_form').validate({
+			onfocusout: false,
+			onkeyup: false,
+			rules: {
+				name: "required",
+				message: "required",
+				email: {
+					required: true,
+					email: true
+				}
+			},
+			errorPlacement: function(error, element) {
+				error.insertAfter(element);
+			},
+			messages: {
+				name: "What's your name?",
+				message: "Type your message",
+				email: {
+					required: "What's your email?",
+					email: "Please, enter a valid email"
+				}
+			},
+						
+			highlight: function(element) {
+				$(element)
+				.text('').addClass('error')
+			},                    
+						
+			success: function(element) {
+				element
+				.text('').addClass('valid')
+			}
+		});   
+		
+		$('#contact_form').submit(function() {
+			// submit the form
+			if($(this).valid()){
+				$('#contact_submit').button('loading'); 
+				var action = $(this).attr('action');
+				$.ajax({
+					url: action,
+					type: 'POST',
+					data: {
+						contactname: $('#contact_name').val(),
+						contactemail: $('#contact_email').val(),
+						contactmessage: $('#contact_message').val()
+					},
+					success: function() {
+						$('#contact_submit').button('reset');
+						$('#modalContact').modal('hide');
+						
+						//Use modal popups to display messages
+						$('#modalMessage .modal-title').html('<i class="icon icon-envelope-open"></i>Well done!<br>Your message has been successfully sent!');
+						$('#modalMessage').modal('show');
+					},
+					error: function() {
+						$('#contact_submit').button('reset');
+						$('#modalContact').modal('hide');
+						
+						//Use modal popups to display messages
+						$('#modalMessage .modal-title').html('<i class="icon icon-ban"></i>Oops!<br>Something went wrong!');
+						$('#modalMessage').modal('show');
+					}
+				});
+			} else {
+				$('#contact_submit').button('reset')
+			}
+			return false; 
+		});	
+	</script> 
+
+</body>
+</html>

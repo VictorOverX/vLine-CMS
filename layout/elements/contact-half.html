@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Contact Half</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-Equiv="Cache-Control" Content="cache">
+	<meta http-Equiv="Pragma" Content="cache">
+	<meta http-Equiv="Expires" Content="1000">
+
+    <!-- Loading Bootstrap Styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+	
+    <!-- Loading Elements Styles -->   
+    <link href="css/style.css" rel="stylesheet"> 
+	
+    <!-- Loading Font Styles -->
+    <link href="css/iconfont-style.css" rel="stylesheet">
+	
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="scripts/html5shiv.js"></script>
+      <script src="scripts/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    
+    <div id="wrap">
+    
+		<!-- CONTACT HALF BLOCK -->
+		<section id="contact-half" class="bg-color1 cover-bg" style="background-image:url(images/bg-map.jpg)">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 dark-bg">
+						<h2 class="title">Contact Us</h2>
+						<p class="sep-bottom">In our work we try to use only the most modern, convenient and interesting solutions. We want the template you downloaded look unique and new for such a long time as it is possible.</p>
+						<ul class="data-list">
+							<li><i class="icon icon-pointer"></i>300 Boylstone Ave E<br>Seattle WA 98102<br>USA</li>
+							<li><i class="icon icon-call-in"></i>732-555-1428<br>732-555-1430</li>
+							<li><i class="icon icon-envelope-open"></i>support@multifour.com</li>
+						</ul>
+					</div>
+					<div class="col-md-5 col-md-offset-1">
+						<div class="form-container">
+							<h3 class="title">Drop us a line</h3>
+							<form action="scripts/contact.php" role="form" id="contact_form">
+								<div class="form-group">
+									<input type="text" class="form-control" id="contact_name" placeholder="Full name" name="name">
+								</div>
+								<div class="form-group">
+									<input type="email" class="form-control" id="contact_email" placeholder="Email Address" name="email">
+								</div>
+								<div class="form-group">
+									<textarea class="form-control" rows="4" placeholder="Your message or question" id="contact_message" name="message"></textarea>
+								</div>
+								<button type="submit" id="contact_submit" data-loading-text="&bull;&bull;&bull;" class="btn btn-lg btn-block btn-primary"><i class="icon icon-paper-plane"></i>Send</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+    
+    </div><!-- /#wrap -->
+	
+	<!-- JavaScript --> 
+	<script src="scripts/jquery-1.11.2.min.js"></script> 
+	<script src="scripts/bootstrap.min.js"></script>
+	<script src="scripts/jquery.validate.min.js"></script> 
+	<script src="scripts/placeholders.jquery.min.js"></script> 
+	<script>
+		$('#contact_form').validate({
+			onfocusout: false,
+			onkeyup: false,
+			rules: {
+				name: "required",
+				message: "required",
+				email: {
+					required: true,
+					email: true
+				}
+			},
+			errorPlacement: function(error, element) {
+				error.insertAfter(element);
+			},
+			messages: {
+				name: "What's your name?",
+				message: "Type your message",
+				email: {
+					required: "What's your email?",
+					email: "Please, enter a valid email"
+				}
+			},
+						
+			highlight: function(element) {
+				$(element)
+				.text('').addClass('error')
+			},                    
+						
+			success: function(element) {
+				element
+				.text('').addClass('valid')
+			}
+		});   
+		
+		$('#contact_form').submit(function() {
+			// submit the form
+			if($(this).valid()){
+				$('#contact_submit').button('loading'); 
+				var action = $(this).attr('action');
+				$.ajax({
+					url: action,
+					type: 'POST',
+					data: {
+						contactname: $('#contact_name').val(),
+						contactemail: $('#contact_email').val(),
+						contactmessage: $('#contact_message').val()
+					},
+					success: function() {
+						$('#contact_submit').button('reset');
+						$('#modalContact').modal('hide');
+						
+						//Use modal popups to display messages
+						$('#modalMessage .modal-title').html('<i class="icon icon-envelope-open"></i>Well done!<br>Your message has been successfully sent!');
+						$('#modalMessage').modal('show');
+					},
+					error: function() {
+						$('#contact_submit').button('reset');
+						$('#modalContact').modal('hide');
+						
+						//Use modal popups to display messages
+						$('#modalMessage .modal-title').html('<i class="icon icon-ban"></i>Oops!<br>Something went wrong!');
+						$('#modalMessage').modal('show');
+					}
+				});
+			} else {
+				$('#contact_submit').button('reset')
+			}
+			return false; 
+		});	
+	</script> 
+
+</body>
+</html>
