@@ -17,10 +17,10 @@
         // Text translation options
         // Note the required keywords between underscores (e.g _MENU_)
         oLanguage: {
-            sSearch:      'Search all columns:',
-            sLengthMenu:  '_MENU_ records per page',
-            info:         'Showing page _PAGE_ of _PAGES_',
-            zeroRecords:  'Nothing found - sorry',
+            sSearch:      'Buscar:',
+            sLengthMenu:  '_MENU_ por página',
+            info:         'Mostrando página _PAGE_ de _PAGES_',
+            zeroRecords:  'Nada encontrado - Desculpe',
             infoEmpty:    'No records available',
             infoFiltered: '(filtered from _MAX_ total records)'
         }
@@ -38,8 +38,8 @@
         // Text translation options
         // Note the required keywords between underscores (e.g _MENU_)
         oLanguage: {
-            sSearch:      'Search all columns:',
-            sLengthMenu:  '_MENU_ records per page',
+            sSearch:      'Buscar:',
+            sLengthMenu:  '_MENU_ por página',
             info:         'Showing page _PAGE_ of _PAGES_',
             zeroRecords:  'Nothing found - sorry',
             infoEmpty:    'No records available',
@@ -67,10 +67,10 @@
         // Text translation options
         // Note the required keywords between underscores (e.g _MENU_)
         oLanguage: {
-            sSearch:      'Search all columns:',
-            sLengthMenu:  '_MENU_ records per page',
-            info:         'Showing page _PAGE_ of _PAGES_',
-            zeroRecords:  'Nothing found - sorry',
+            sSearch:      'Buscar:',
+            sLengthMenu:  '_MENU_ por página',
+            info:         'Mostrando por página _PAGE_ de _PAGES_',
+            zeroRecords:  'Nada encontrado - sorry',
             infoEmpty:    'No records available',
             infoFiltered: '(filtered from _MAX_ total records)'
         },

@@ -55,6 +55,25 @@
                </ul>
             </li> 
 
+            <li class="nav-heading ">
+               <span>Gestão de Usuários</span>
+            </li>
+            <li class="{{ \App\library\CoreHelpers::Ativate(['admin/usuarios', 'admin/grupos'], 'active') }}">
+               <a href="#usuarios" title="Gestão de Usuários" data-toggle="collapse">
+                  <em class="icon-user"></em>
+                  <span>Gestão de Usuários</span>
+               </a>
+               <ul id="usuarios" class="nav sidebar-subnav collapse">
+                  <li class="{{ \App\library\CoreHelpers::Ativate('admin/usuarios', 'active') }}">
+                     <a href="{{ URL::to('admin/usuarios') }}" title="Layout">
+                        <em></em>
+                        <span>Usuários</span>
+                     </a>
+                  </li>                 
+                                     
+               </ul>
+            </li> 
+
          </ul>
       </nav>
    </div>

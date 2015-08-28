@@ -38,7 +38,7 @@
             <!-- END User avatar toggle-->
             <!-- START lock screen-->
             <li>
-               <a href="lock.html" title="Lock screen">
+               <a href="" title="Lock screen">
                   <em class="icon-lock"></em>
                </a>
             </li>
@@ -77,9 +77,9 @@
                                  <em class="fa fa-twitter fa-2x text-info"></em>
                               </div>
                               <div class="media-box-body clearfix">
-                                 <p class="m0">New followers</p>
+                                 <p class="m0">Novos Seguidores</p>
                                  <p class="m0 text-muted">
-                                    <small>1 new follower</small>
+                                    <small>1 novo seguidor</small>
                                  </p>
                               </div>
                            </div>
@@ -91,9 +91,9 @@
                                  <em class="fa fa-envelope fa-2x text-warning"></em>
                               </div>
                               <div class="media-box-body clearfix">
-                                 <p class="m0">New e-mails</p>
+                                 <p class="m0">Novo e-mails</p>
                                  <p class="m0 text-muted">
-                                    <small>You have 10 new emails</small>
+                                    <small>Você tem novos 10 e-mails</small>
                                  </p>
                               </div>
                            </div>
@@ -105,16 +105,16 @@
                                  <em class="fa fa-tasks fa-2x text-success"></em>
                               </div>
                               <div class="media-box-body clearfix">
-                                 <p class="m0">Pending Tasks</p>
+                                 <p class="m0">Tarefas pendentes</p>
                                  <p class="m0 text-muted">
-                                    <small>11 pending task</small>
+                                    <small>11 tarefas pendentes</small>
                                  </p>
                               </div>
                            </div>
                         </a>
                         <!-- last list item -->
                         <a href="#" class="list-group-item">
-                           <small>More notifications</small>
+                           <small>Mais notificações</small>
                            <span class="label label-danger pull-right">14</span>
                         </a>
                      </div>
@@ -138,10 +138,10 @@
       <!-- START Search form-->
       <form role="search" action="search.html" class="navbar-form">
          <div class="form-group has-feedback">
-            <input type="text" placeholder="Type and hit enter ..." class="form-control">
+            <input type="text" placeholder="Buscar no site..." class="form-control">
             <div data-search-dismiss="" class="fa fa-times form-control-feedback"></div>
          </div>
-         <button type="submit" class="hidden btn btn-default">Submit</button>
+         <button type="submit" class="hidden btn btn-default">Enviar</button>
       </form>
       <!-- END Search form-->
    </nav>

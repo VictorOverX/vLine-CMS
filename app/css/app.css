@@ -4674,7 +4674,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > li > span {
   position: relative;
   float: left;
-  padding: 6px 16px;
+  padding: 4px 10px;
   line-height: 1.52857143;
   text-decoration: none;
   color: #515253;
