@@ -9,3 +9,20 @@
 	{
 		return \URL::to($value);
 	}
+
+	function nivelStatus($value)
+	{
+		switch ($value) {
+			case '1':
+				return 'Usuário';
+				break;
+			
+			case '2':
+				return 'Moderador';
+				break;
+
+			case '3':
+				return 'Administrador';
+				break;
+		}
+	}

@@ -5,8 +5,9 @@
 	position:absolute;
 	background:#2B2E33;
 	color:#dadada;
-	padding:10px;
+	padding:20px;
 	padding-left:10px;
+	text-align: center;
 	margin:15px;
 	z-index:9999;
 	-moz-border-radius : 4px;
@@ -27,7 +28,8 @@
 	position:absolute;
 	background:#18A689;
 	color:#fff;
-	padding:10px;
+	padding:20px;
+	text-align: center;
 	padding-left:10px;
 	margin:15px;
 	z-index:9999;

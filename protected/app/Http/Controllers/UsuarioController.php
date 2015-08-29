@@ -44,9 +44,10 @@ class UsuarioController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
+     * CRIANDO UM NOVO USUÁRIO | CREATING NEW USER
+     * Metodo para cadastramento de novo usuário, retorna mensagem para notificação ajax
      * @return Response
+     * Ajax - usuario.js
      */
     public function novoUser()
     {
@@ -118,14 +119,17 @@ class UsuarioController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * LENDO DADOS DE USUARIO
      *
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function readUser($id)
     {
-        //
+        $user = \App\Models\User::where('id', $id)->join('details', 'users.id', '=', 'details.detail_perfil_id')->first();
+        if(count($user) > 0){
+            return \Response::json($user);
+        }
     }
 
     /**
@@ -134,34 +138,70 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function updateUser()
     {
-        //
+        $senha_a  = \Input::get('password');
+        $senha_b  = \Input::get('rep_password');
+        $id       = \Input::get('id');
+
+        $input    = \Input::except('_token', 'img', 'rep_password', 'password', '_', 'id');
+
+        if($input['name'] == '' || $input['email'] == '')
+        {
+            return 'camposvazio';
+        }else{
+            if($senha_a != '' && $senha_b != ''){
+                if($senha_a == $senha_b){
+                    //Preparando pra salvar a senha no banco de dados
+                    $input['password']      = \Hash::make($senha_a); 
+                }else{
+                    return 'senhanaoconfere';
+                }
+            }                
+
+            //Data Atual
+            $input['updated_at'] = date('Y-m-d H:i:s');    
+
+            // Criando um usuário
+            $update = \App\Models\User::where("id", $id)->update($input);
+            
+            if($update)
+            {
+                $dados_details = array(
+                    'detail_perfil_id'  => $id,
+                    'updated_at'        => date('Y-m-d H:i:s')
+                );
+
+                // fazendo upload do avatar
+                                
+                $file       = \Input::file('img');
+                if (!empty($file)) {
+                    $upload = new \App\Library\UploadHelpers();
+
+                    // Verificando se existe
+                    $imagem = \App\Models\Details::where("detail_perfil_id", $id)->where("detail_avatar", "!=", '')->first();
+                    if (isset($imagem) && $imagem->detail_avatar != '' && \File::exists('uploads/' . $imagem->detail_avatar)) {
+                        \File::delete('uploads/' . $imagem->detail_avatar);
+                    }
+
+                    if ($upload->ImageUpload($file)) {
+                        $dados_details['detail_avatar'] = $upload->NomeArquivo(); // Criando o valor a ser enviado para o banco de dados com o nome e caminho do arquivo
+                    }
+                }
+
+                
+
+                $details = \App\Models\Details::where("detail_perfil_id", $id)->update($dados_details);
+                if($details)
+                {
+                    return 'sucesso';
+                }
+            }
+
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
+   
     /**
      * Remove the specified resource from storage.
      *
@@ -170,6 +210,30 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = \App\Models\User::all();
+        if(count($user) > 1)
+        {
+            if(!empty($id))
+            {
+                // Verificando se existe imagem
+                $imagem = \App\Models\Details::where("detail_perfil_id", $id)->where("detail_avatar", "!=", '')->first();
+                if (isset($imagem) && $imagem->detail_avatar != '' && \File::exists('uploads/' . $imagem->detail_avatar)) {
+                    \File::delete('uploads/' . $imagem->detail_avatar);
+                }
+
+                $delete = \App\Models\User::where("id", $id)->delete();
+                if($delete)
+                {
+                     $details = \App\Models\Details::where("detail_perfil_id", $id)->delete();
+                     if($details)
+                     {
+                        return 'sucesso';
+                     }
+                }
+            }
+
+        }else{
+            return 'ultimousuario';
+        }        
     }
 }
