@@ -1,2 +1,2 @@
 # vLine-CMS
-Sistema CMS de blog
+Sistema <strong>CMS</strong> de site, com módulos administráveis para diversas funcionalidades.
