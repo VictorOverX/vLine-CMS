@@ -50,13 +50,71 @@ class UsuarioController extends Controller
      */
     public function novoUser()
     {
-        $input  = \Input::except('_token', 'file');
+        $senha_a  = \Input::get('password');
+        $senha_b  = \Input::get('rep_password');
 
-        //gerar uma senha
-        $senha  = \App\Library\CoreHelpers::geraSenha(6);
+        $input    = \Input::except('_token', 'img', 'rep_password', 'password', '_');
 
-        print_r($senha);
-        
+        if($input['name'] == '' || $input['email'] == '' || $senha_a == '' || $senha_b == '')
+        {
+            return 'camposvazio';
+        }else{
+            if($senha_a == $senha_b){
+                //Preparando pra salvar a senha no banco de dados
+                $input['password']      = \Hash::make($senha_a); 
+            }else{
+                return 'senhanaoconfere';
+            }
+            //gerar uma senha
+            //$senha  = \App\Library\CoreHelpers::geraSenha(6);
+
+            // Enviando email com a senha
+            /*
+            $data = array(
+                'site'  => CNF_COMNAME,
+                'senha' => $senha,
+                'nome'  => $input['name'],
+                'email' => $input['email']
+            );
+         
+            \Mail::send('emails.nova-senha', $data, function ($m) use ($data) 
+            {
+                $m
+                ->to($data['email'], CNF_COMNAME)
+                ->subject('Nova senha no sistema - '. CNF_COMNAME);
+            });
+            */
+
+            //Data Atual
+            $input['created_at']    = date('Y-m-d H:i:s');    
+
+            // Criando um usuário
+            $create = \App\Models\User::create($input);
+            
+            if($create)
+            {
+                //Ultimo ID
+                $ultimo_id  = $create->id;
+
+                // fazendo upload do avatar
+                $avatar     = '';
+                
+                $file       = \Input::file('img');
+                if (!empty($file)) {
+                    $upload = new \App\Library\UploadHelpers();
+                    if ($upload->ImageUpload($file)) {
+                        $avatar = $upload->NomeArquivo(); // Criando o valor a ser enviado para o banco de dados com o nome e caminho do arquivo
+                    }
+                }
+                
+
+                $details = \App\Models\Details::create(array('detail_perfil_id' => $ultimo_id, 'detail_avatar' => $avatar, 'created_at' => date('Y-m-d H:i:s')));
+                if($details)
+                {
+                    return 'sucesso';
+                }
+            }
+        }
     }
 
     /**

@@ -30,6 +30,7 @@
 								<td>
 									<div class="media">
 										@if($usuario->detail_avatar != '')
+											{!! \App\Library\CoreHelpers::Image($usuario->detail_avatar, '', '50', '50', 'img-responsive img-circle') !!}
 										@else
 											<img src="{{ urlBase('app/img/user/02.jpg') }}" alt="" class="img-responsive img-circle">
 										@endif
@@ -75,7 +76,19 @@
 							</div>
 						</div>
 					</div>
-					<input type="hidden" name="_token" value="{{ csrf_token() }}">					
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-6">
+								<label>Senha</label>
+								<input name="password" type="password" placeholder="Senha" class="form-control">
+							</div>
+							<div class="col-md-6">
+								<label>Repita Senha</label>
+								<input name="rep_password" type="password" placeholder="Repita sua senha" class="form-control">
+							</div>
+						</div>
+					</div>
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-12">
@@ -89,10 +102,10 @@
 						<div class="row">
 							<div class="col-md-12">
 								<label>Nível</label>
-								<select name="nivel" multiple="" class="form-control">
-                                   <option>Usuário (Padrão)</option>
-                                   <option>Moderador</option>
-                                   <option>Administrador</option>
+								<select name="nivel" class="form-control">
+                                   <option value="1">Usuário (Padrão)</option>
+                                   <option value="2">Moderador</option>
+                                   <option value="3">Administrador</option>
                                 </select>
 							</div>
 						</div>
@@ -102,7 +115,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<label>Avatar</label>
-								<input type="file" name="file" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle">
+								<input type="file" name="img" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle">
 							</div>
 						</div>
 					</div>

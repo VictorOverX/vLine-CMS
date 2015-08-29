@@ -20,6 +20,7 @@
 */
 
 require __DIR__.'/protected/bootstrap/autoload.php';
+require 'setting.php';
 
 /*
 |--------------------------------------------------------------------------

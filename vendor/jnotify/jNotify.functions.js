@@ -18,7 +18,7 @@ function noty_success(texto, reload, time){
     if(reload == true)
     {
         window.setTimeout(function () {
-            location.reload();
+            window.location.reload();
         }, time);
 
         //console.log(time);
@@ -39,7 +39,7 @@ function noty(texto, reload, time){
     if(reload == true)
     {
         window.setTimeout(function () {
-            location.reload();
+            window.location.reload();
         }, time);
 
         //console.log(time);
@@ -66,10 +66,10 @@ function noty_default(texto, reload, time){
     if(reload == true)
     {
         window.setTimeout(function () {
-            location.reload();
+            window.location.reload();
         }, time);
 
-        console.log(time);
+       // console.log(time);
     }
 }
 
@@ -93,7 +93,7 @@ function noty_error(texto, reload, time){
     if(reload == true)
     {
         window.setTimeout(function () {
-            location.reload();
+            window.location.reload();
         }, time);
     }
 }

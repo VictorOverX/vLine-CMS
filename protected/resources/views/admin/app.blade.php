@@ -52,8 +52,28 @@
    <script src="{{ URL::to('vendor/modernizr/modernizr.js') }}"></script>
    <!-- JQUERY-->
    <script src="{{ URL::to('vendor/jquery/dist/jquery.js') }}"></script>
+
    <!-- JQUERY FORM-->
-   <script src="{{ URL::to('vendor/jquery-form/jquery.form.min.js') }}"></script>
+   <script src="{{ URL::to('vendor/jquery-form/jquery.form.min.js') }}"></script>   
+
+   <!-- BOOTSTRAP-->
+   <script src="{{ URL::to('vendor/bootstrap/dist/js/bootstrap.js') }}"></script>
+   <!-- STORAGE API-->
+   <script src="{{ URL::to('vendor/jQuery-Storage-API/jquery.storageapi.js') }}"></script>
+   <!-- JQUERY EASING-->
+   <script src="{{ URL::to('vendor/jquery.easing/js/jquery.easing.js') }}"></script>
+   <!-- ANIMO-->
+   <script src="{{ URL::to('vendor/animo.js/animo.js') }}"></script>
+
+   <script src="{{ URL::to('vendor/jnotify/jNotify.jquery.min.js') }}"></script>
+   <script src="{{ URL::to('vendor/jnotify/jNotify.functions.js') }}"></script>
+      
+   <!-- SLIMSCROLL-->
+   <script src="{{ URL::to('vendor/slimScroll/jquery.slimscroll.min.js') }}"></script>
+   <!-- SCREENFULL-->
+   <script src="{{ URL::to('vendor/screenfull/dist/screenfull.min.js') }}"></script>
+   <!-- LOCALIZE-->
+   <script src="{{ URL::to('vendor/jquery-localize-i18n/dist/jquery.localize.js') }}"></script>
 
    <script src="{{ URL::to('vendor/animsition/jquery.animsition.min.js') }}"></script>
    <script type="text/javascript">
@@ -82,26 +102,8 @@
       });
    </script>
 
-   <!-- BOOTSTRAP-->
-   <script src="{{ URL::to('vendor/bootstrap/dist/js/bootstrap.js') }}"></script>
-   <!-- STORAGE API-->
-   <script src="{{ URL::to('vendor/jQuery-Storage-API/jquery.storageapi.js') }}"></script>
-   <!-- JQUERY EASING-->
-   <script src="{{ URL::to('vendor/jquery.easing/js/jquery.easing.js') }}"></script>
-   <!-- ANIMO-->
-   <script src="{{ URL::to('vendor/animo.js/animo.js') }}"></script>
-   
-   <!-- SLIMSCROLL-->
-   <script src="{{ URL::to('vendor/slimScroll/jquery.slimscroll.min.js') }}"></script>
-   <!-- SCREENFULL-->
-   <script src="{{ URL::to('vendor/screenfull/dist/screenfull.min.js') }}"></script>
-   <!-- LOCALIZE-->
-   <script src="{{ URL::to('vendor/jquery-localize-i18n/dist/jquery.localize.js') }}"></script>
-
    <script src="{{ URL::to('vendor/jquery-localize-i18n/dist/jquery.localize.js') }}"></script>
    <!-- RTL demo-->
-   <script src="{{ URL::to('vendor/jnotify/jNotify.jquery.min.js') }}"></script>
-   <script src="{{ URL::to('vendor/jnotify/jNotify.functions.js') }}"></script>
    
    <!-- JQUERY FUNCTIONS-->
    <script src="{{ URL::to('app/js/functions.js') }}"></script>
@@ -109,8 +111,6 @@
    <!-- =============== PAGE VENDOR SCRIPTS ===============-->
    {!! (isset($script) ? $script : '') !!}
 
-   <!-- SPARKLINE-->
-   <script src="{{ URL::to('vendor/sparklines/jquery.sparkline.min.js') }}"></script>
    <!-- FLOT CHART-->
    <script src="{{ URL::to('vendor/Flot/jquery.flot.js') }}"></script>
    <script src="{{ URL::to('vendor/flot.tooltip/js/jquery.flot.tooltip.min.js') }}"></script>
