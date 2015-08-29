@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -21,7 +22,10 @@ class UsuarioController extends Controller
         <link rel="stylesheet" href="'. \URL::to('app/vendor/datatable-bootstrap/css/dataTables.bootstrap.css') .'">
         ';
 
-        $script = '    
+        $script = '  
+        <script src="'. \URL::to('vendor/bootstrap-filestyle/src/bootstrap-filestyle.js').'"></script> 
+        <script src="'. \URL::to('vendor/chosen_v1.2.0/chosen.jquery.min.js').'"></script>
+         
         <script src="'. \URL::to('vendor/datatables/media/js/jquery.dataTables.min.js') .'"></script>
         <script src="'. \URL::to('vendor/datatables-colvis/js/dataTables.colVis.js') .'"></script>
         <script src="'. \URL::to('app/vendor/datatable-bootstrap/js/dataTables.bootstrap.js') .'"></script>
@@ -30,7 +34,9 @@ class UsuarioController extends Controller
         <script src="'. \URL::to('app/js/ajax/usuarios.js') .'"></script>       
         ';
 
-        $dados = array(
+        $usuarios   = \App\Models\User::join('details', 'users.id', '=', 'details.detail_perfil_id')->get();
+        $dados      = array(
+            'usuarios'  => $usuarios,
             'style'     => $style,
             'script'    => $script
         );        
@@ -42,9 +48,15 @@ class UsuarioController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function novoUser()
     {
-        //
+        $input  = \Input::except('_token', 'file');
+
+        //gerar uma senha
+        $senha  = \App\Library\CoreHelpers::geraSenha(6);
+
+        print_r($senha);
+        
     }
 
     /**
