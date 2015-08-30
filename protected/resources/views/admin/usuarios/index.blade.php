@@ -5,11 +5,9 @@
 
 <div class="row">
 	<div class="col-lg-12">
-		<div class="panel panel-default animated bounce">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="panel-header"><button data-toggle="modal" data-target="#novoUsuario" class="btn btn-success" style="margin:10px; float:right"><i class="fa fa-plus"></i> Novo usuário</button></div>
-				</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel-header"><button data-toggle="modal" data-target="#novoUsuario" class="btn btn-success" style="margin:10px 0; float:right"><i class="icon-plus"></i> &nbsp Novo usuário</button></div>
 			</div>
 		</div>
 		<div class="panel panel-default animated bounce">			
@@ -21,7 +19,7 @@
 							<th>Nome</th>
 							<th class="sort-alpha">E-mail</th>
 							<th class="sort-alpha">Nível</th>
-							<th width="25%" class="sort-alpha">Opções</th>
+							<th width="20%" class="sort-alpha">Opções</th>
 						</tr>
 					</thead>
 					<tbody>

@@ -32,7 +32,7 @@ $(function(){
 			data: {conteudo: conteudo, _token: token },
 			success: function(e){
 				if(e === 'sucesso'){
-					jSuccess("Seu Layout foi salvo com sucesso!");
+					noty_success("Seu Layout foi salvo com sucesso!");
 					carregarDados();
 				}
 			}
@@ -52,7 +52,7 @@ $(function(){
 			success: function(e){	
 				if(e === 'sucesso'){
 					$('#progresso').empty();
-					jSuccess("Seu Layout foi carregado com sucesso!");
+					noty_success("Seu Layout foi carregado com sucesso!");
 				}else if(e === 'formatoinvalido'){
 					noty_default("Desculpe! Tipo de arquivo invalido!");
 				}else if(e === 'erro'){
@@ -71,7 +71,7 @@ $(function(){
 			type: 'get',			
 			success: function(e){
 				if(e === 'sucesso'){					
-					jSuccess("Seu Layout foi apagado com sucesso!");
+					noty_success("Seu Layout foi apagado com sucesso!", true);
 				}
 			}
 	    });

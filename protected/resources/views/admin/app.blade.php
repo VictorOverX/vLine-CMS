@@ -22,6 +22,7 @@
 
    <!-- =============== APP STYLES ===============-->
    <link rel="stylesheet" href="{{ URL::to('app/css/app.css') }}" id="maincss">
+   <link rel="stylesheet" href="{{ URL::to('app/css/icons.min.css') }}" >
    <!-- URL BASE -->
    <div id="j_urlBase" url-base="{{ URL::to('/') }}/"></div>
    <meta id="token" name="csrf-token" content="<?php echo csrf_token() ?>"/>
@@ -125,8 +126,7 @@
    <script src="{{ URL::to('vendor/moment/min/moment-with-locales.min.js') }}"></script>
    <!-- SKYCONS-->
    <script src="{{ URL::to('vendor/skycons/skycons.js') }}"></script>
-   <!-- DEMO-->
-   <script src="{{ URL::to('app/js/demo/demo-flot.js') }}"></script>
+   
    <!-- =============== APP SCRIPTS ===============-->
    <script src="{{ URL::to('app/js/app.js') }}"></script>
 

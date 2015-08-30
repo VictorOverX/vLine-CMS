@@ -26,14 +26,54 @@
             </li>
             <li class="{{ \App\library\CoreHelpers::Ativate("admin/painel", "active") }}">
                <a href="{{ URL::to('admin/painel') }}" title="Dashboard">
-                  <em class="icon-home"></em>
+                  <em class="icon-home2"></em>
                   <span>Dashboard</span>
                </a>               
-            </li>                 
+            </li> 
+
+            <li class="nav-heading ">
+               <span>Blog</span>
+            </li>
+            <li class="">
+               <a href="#blog" title="Blog de Notícias" data-toggle="collapse">
+                  <em class="icon-note"></em>
+                  <span>Blog de Notícias</span>
+               </a>
+               <ul id="blog" class="nav sidebar-subnav collapse">
+                  <li class="{{ \App\library\CoreHelpers::Ativate(['admin/posts', 'admin/novo-post'], 'active') }}">
+                     <a href="{{ URL::to('admin/posts') }}" title="Posts">
+                        <em></em>
+                        <span>Posts</span>
+                     </a>
+                  </li>   
+
+                  <li class="{{ \App\library\CoreHelpers::Ativate('admin/tags', 'active') }}">
+                     <a href="{{ URL::to('admin/tags') }}" title="Tags">
+                        <em></em>
+                        <span>Tags</span>
+                     </a>
+                  </li>                  
+
+                  <li class="{{ \App\library\CoreHelpers::Ativate('admin/categorias', 'active') }}">
+                     <a href="{{ URL::to('admin/categorias') }}" title="Categorias">
+                        <em></em>
+                        <span>Categorias</span>
+                     </a>
+                  </li>  
+
+                  <li class="{{ \App\library\CoreHelpers::Ativate('admin/comentarios', 'active') }}">
+                     <a href="{{ URL::to('admin/comentarios') }}" title="Posts">
+                        <em></em>
+                        <span>Comentários</span>
+                     </a>
+                  </li>                  
+               </ul>
+            </li> 
+
             <li class="nav-heading ">
                <span>Layout Studio</span>
             </li>
-            <li class="{{ \App\library\CoreHelpers::Ativate(['admin/editor-arquivo', 'admin/editor-menu', 'admin/editor-layout'], 'active') }}">
+            <li class="">
                <a href="#layout" title="Gerenciador (CMS)" data-toggle="collapse">
                   <em class="icon-folder-alt"></em>
                   <span>Gerenciador (CMS)</span>
@@ -56,11 +96,11 @@
             </li> 
 
             <li class="nav-heading ">
-               <span>Gestão de Usuários</span>
+               <span>Configurações</span>
             </li>
-            <li class="{{ \App\library\CoreHelpers::Ativate(['admin/usuarios', 'admin/grupos'], 'active') }}">
+            <li class="">
                <a href="#usuarios" title="Gestão de Usuários" data-toggle="collapse">
-                  <em class="icon-user"></em>
+                  <em class="icon-users"></em>
                   <span>Gestão de Usuários</span>
                </a>
                <ul id="usuarios" class="nav sidebar-subnav collapse">

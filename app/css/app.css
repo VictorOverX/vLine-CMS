@@ -1,14 +1,6 @@
 @charset "UTF-8";
 @import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,400italic);
 /*!
- * 
- * Angle - Bootstrap Admin App + jQuery
- * 
- * Author: @themicon_co
- * Website: http://themicon.co
- * License: http://support.wrapbootstrap.com/knowledge_base/topics/usage-licenses
- * 
- */
 /* ========================================================================
 
 [Table of contents]
@@ -5833,6 +5825,9 @@ button.close {
 .modal-title {
   margin: 0;
   line-height: 1.52857143;
+      font-weight: 300;
+    text-transform: uppercase;
+    font-size: 14px;
 }
 .modal-body {
   position: relative;
@@ -7356,7 +7351,7 @@ body {
   .topnavbar .navbar-nav > .open > a:hover,
   .topnavbar .navbar-nav > li > a:focus,
   .topnavbar .navbar-nav > .open > a:focus {
-    color: #117391;
+    color: #EFE8E8;
   }
   .topnavbar .navbar-nav > li > [data-toggle='navbar-search'] {
     position: static;
@@ -13747,4 +13742,13 @@ body .jvectormap-zoomout {
     float: right;
     margin-top: 10px;
     height: 50px;
+}
+
+.titulo h4{
+    margin: 15px 0;
+    font-weight: 400;
+}
+
+.btn i{
+  font-size: 12px;
 }

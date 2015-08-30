@@ -32,14 +32,14 @@
             <li>
                <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
                <a href="#user-block" data-toggle="collapse">
-                  <em class="icon-user"></em>
+                  <em class="fa fa-user"></em>
                </a>
             </li>
             <!-- END User avatar toggle-->
             <!-- START lock screen-->
             <li>
                <a href="" title="Lock screen">
-                  <em class="icon-lock"></em>
+                  <em class="fa fa-lock"></em>
                </a>
             </li>
             <!-- END lock screen-->
@@ -50,7 +50,7 @@
             <!-- Search icon-->
             <li>
                <a href="#" data-search-open="">
-                  <em class="icon-magnifier"></em>
+                  <em class="fa fa-search"></em>
                </a>
             </li>
             <!-- Fullscreen (only desktops)-->
@@ -62,7 +62,7 @@
             <!-- START Alert menu-->
             <li class="dropdown dropdown-list">
                <a href="#" data-toggle="dropdown">
-                  <em class="icon-bell"></em>
+                  <em class="fa fa-bell"></em>
                   <div class="label label-danger">11</div>
                </a>
                <!-- START Dropdown menu-->
@@ -127,7 +127,7 @@
             <!-- START Contacts button-->
             <li>
                <a href="{{ URL::to('logout') }}">
-                  <em class="icon-notebook"></em>
+                  <em class="fa fa-unlock"></em>
                </a>
             </li>
             <!-- END Contacts menu-->
