@@ -7,6 +7,7 @@
 	<li>Gestão de usuário CMS</li>
 </ul>
  
+<h3>Contéudo</h3>
 <ul>
 	<li><strong>Web site</strong><a href=""></a> </li>
 	<li><strong>Tutorial</strong><a href=""></a> </li>
@@ -22,10 +23,10 @@ Para instalar é muito simples, basta subir para seu servidor de hospedagem ou l
 
 <h4>Portfolio - Instalação</h4>
 <p>
-	1ª - Copie o modulo para dentro da pasta <strong>packages/LineXTI</strong>.
-	2ª - Em seguida adicione em seu <strong>composer.json</strong> em <strong>psr-4</strong> a linha <code> "LineXTI\\Portfolio\\": "packages/LineXTI/Portfolio/src"</code>. 
-	3ª - Agora rode o comando <code>composer dump-autoload</code>, para finalizar, em seu terminal <code>php artisan vender:publish</code>.
-	4ª - Por ultimo va em <strong>config/app.php</strong>, procure a linha <strong>providers</strong> e adicione <code>LineXTI\Portfolio\PortfolioServiceProvider::class,</code>.
+	1ª - Copie o modulo para dentro da pasta <strong>packages/LineXTI</strong>.<br/>
+	2ª - Em seguida adicione em seu <strong>composer.json</strong> em <strong>psr-4</strong> a linha <code> "LineXTI\\Portfolio\\": "packages/LineXTI/Portfolio/src"</code>. <br/>
+	3ª - Agora rode o comando <code>composer dump-autoload</code>, para finalizar, em seu terminal <code>php artisan vender:publish</code>.<br/>
+	4ª - Por ultimo va em <strong>config/app.php</strong>, procure a linha <strong>providers</strong> e adicione <code>LineXTI\Portfolio\PortfolioServiceProvider::class,</code>.<br/>
 </p>
 
 <h3>Tecnologias</h3>

@@ -180,11 +180,11 @@ class BlogController extends Controller
 
         $tags       = \App\Models\Tags::all(); 
         $categorias = \App\Models\Categorias::all(); 
-        $posts      = \App\Models\Posts::where('post_id', $id)->join('categorias', 'posts.post_categoria_id', '=', 'categorias.cat_id')->first(); 
+        $post       = \App\Models\Posts::where('post_id', $id)->join('categorias', 'posts.post_categoria_id', '=', 'categorias.cat_id')->first(); 
         
         
         $dados      = array(
-            'posts'     => $posts,
+            'post'      => $post,
             'tags'      => $tags,
             'categorias'=> $categorias,
             'style'     => $style,

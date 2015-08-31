@@ -2,6 +2,7 @@
 	$(function(){
 		$('.chosen-select').chosen();
 
+		// CRIANDO NOVO POST
 		$(document).on('submit', '#j_criar_post', function(){
 			$(this).ajaxSubmit({
 				url: baseUrl() + 'admin/criar-novo-post',
@@ -65,6 +66,19 @@
 
 			return false;
 		});
+
+		// EDITANDO POST
+		$(document).on('submit', '#j_editar_post', function(){
+			$(this).ajaxSubmit({
+				url: baseUrl() + 'admin/update-post',
+				type: 'get',
+				success: function(e){				
+					alert(e);				
+				}
+			});
+			return false;
+		});
+
 
 
 	});

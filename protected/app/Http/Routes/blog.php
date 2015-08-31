@@ -1,19 +1,19 @@
 <?php
 	
 	//POSTS
-	Route::get('posts', 		'BlogController@index'); // Abre a view de todos os posts
-	Route::get('novo-post', 	'BlogController@novoPost'); // Abre a view de novos posts
-	Route::post('criar-novo-post', 'BlogController@criarNovoPost'); // Abre a view de novos posts
-	Route::get('editar-post/{id}', 'BlogController@editarPost');
+	Route::get('posts', 			'BlogController@index'); // ABRE A VIEW PARA TODOS OS POSTS || OPEN VIEW FOR ALL POST GRID
+	Route::get('novo-post', 		'BlogController@novoPost'); // VIEW PARA NOVO POST || OPEN VIEW FOR NEW POST
+	Route::post('criar-novo-post', 	'BlogController@criarNovoPost'); // VIEW PARA NOVO POST || VIEW FOR NEW POST 
+	Route::get('editar-post/{id}', 	'BlogController@editarPost'); // VIEW PARA EDIÇÃO || OPEN VIEW FOR EDIT POST
 
 	// COMENTARIOS
-	Route::get('comentarios', 	'BlogController@comentarios'); // Abre a view de todos os comentarios
+	Route::get('comentarios', 		'BlogController@comentarios'); // VIEW PARA TODOS COMENTARIOS || OPEN VIEW FOR ALL COMMENTS
 
 	// CATEGORIAS
-	Route::get('categorias', 	'BlogController@categorias'); // Abre a view de todas as categorias 
-	Route::get('nova-categoria','BlogController@novaCategoria'); // Cadastrando nova categoria
+	Route::get('categorias', 		'BlogController@categorias'); // ABRE VIEW PARA CATEGORIAS ||  VIEW FOR ALL CATEGORY
+	Route::get('nova-categoria',	'BlogController@novaCategoria'); // CADASTRAR NOVA CATEGORIA || CREATING NEW CATEGORY
 	
 	// TAGS
-	Route::get('tags', 			'BlogController@tags'); // Abre a view de todas as tags
-	Route::get('nova-tag', 		'BlogController@novaTag'); // Cadastrando nova tag
+	Route::get('tags', 				'BlogController@tags'); // ABRE VIEW TAGS || OPEN VIEW TAGS
+	Route::get('nova-tag', 			'BlogController@novaTag'); // CADASTRAR NOVA TAG || CREATING NEW TAG
 	

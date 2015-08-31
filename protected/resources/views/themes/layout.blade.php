@@ -53,6 +53,7 @@
     						<li><a href="{{ URL::to('home') }}">Home</a></li>
     						<li><a href="#">Sobre</a></li>
     						<li><a href="#">Contato</a></li>
+    						<li><a href="{{ URL::to('login') }}">login</a></li>
     					</ul>
     				</div>
     			</div>

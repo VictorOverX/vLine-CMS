@@ -44,7 +44,7 @@ $(function(){
 		return false;
 	}
 
-    // Editando arquivo
+    // EDITANDO ARQUIVO
 	$(document).on('click', '.j_editor_arquivo', function(){
 		var dataFile = $(this).attr("data-file-name");
 		var dataType = $(this).attr("data-type");

@@ -12257,7 +12257,7 @@ body .chosen-container-multi .chosen-choices li.search-field input[type=text] {
   color: #b7bac9;
 }
 body .bootstrap-filestyle {
-  max-width: 380px;
+      max-width: 100%;
 }
 body [data-classyloader] {
   max-width: 100%;

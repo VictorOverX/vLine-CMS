@@ -1,5 +1,5 @@
 <?php
 
-Route::post('log', 		'LogController@store'); // faz o login e cria a sessão
-Route::get('login', 	'LogController@index'); // Abre a view de login
-Route::get('logout', 	'LogController@logout'); // Desaloga do sistema
+Route::post('log', 		'LogController@store'); // LOGIN E SESSÃO || LOGIN AND SESSION
+Route::get('login', 	'LogController@index'); // ABRE VIEW LOGIN || OPEN VIEW LOGIN 
+Route::get('logout', 	'LogController@logout'); // SAIR DO SISTEMA || LOGOUT SYSTEM
