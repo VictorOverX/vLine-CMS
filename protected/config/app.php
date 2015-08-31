@@ -139,6 +139,12 @@ return [
         Collective\Html\HtmlServiceProvider::class,
 
         /*
+        * PACKAGES
+        */
+        LineXTI\Portfolio\PortfolioServiceProvider::class,
+
+
+        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,

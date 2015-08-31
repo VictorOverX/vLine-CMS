@@ -4,6 +4,7 @@
 	Route::get('posts', 		'BlogController@index'); // Abre a view de todos os posts
 	Route::get('novo-post', 	'BlogController@novoPost'); // Abre a view de novos posts
 	Route::post('criar-novo-post', 'BlogController@criarNovoPost'); // Abre a view de novos posts
+	Route::get('editar-post/{id}', 'BlogController@editarPost');
 
 	// COMENTARIOS
 	Route::get('comentarios', 	'BlogController@comentarios'); // Abre a view de todos os comentarios

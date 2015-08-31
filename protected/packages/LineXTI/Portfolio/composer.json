@@ -1,0 +1,20 @@
+{
+    "name": "linexti/portfolio",
+    "description": "Sistema de cadastramento de portfolio",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Victor Mariano",
+            "email": "contato.treinarbh@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4":{
+            "LineXTI\\Portfolio\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/support":  "~5"
+    }
+}

@@ -48,12 +48,12 @@
 													break;
 												case 'nao':
 													echo 'Desativado';
-													break;
+													break; 
 											}
 										?>
 									</td>
 									<td>
-										<button id="{{ $post->post_id }}" class="btn btn-xs btn-primary j_editar_post"><i class="fa fa-pencil-square-o"></i> Editar</button>
+										<a href="{{ URL::to('admin/editar-post/' . base64_encode($post->post_id)) }}" id="{{ $post->post_id }}" class="btn btn-xs btn-primary j_editar_post"><i class="fa fa-pencil-square-o"></i> Editar</a>
 										<button id="{{ $post->post_id }}" class="btn btn-xs btn-danger j_excluir_post"><i class="fa fa-close"></i> Excluir</button>
 									</td>
 								</tr>

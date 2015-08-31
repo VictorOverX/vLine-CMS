@@ -136,6 +136,63 @@ class BlogController extends Controller
             }
         }
     }
+
+    public function editarPost($id)
+    {
+        $id = base64_decode($id);
+
+        $style  = '
+        <!-- TAGS INPUT-->
+        <link rel="stylesheet" href="'. \URL::to('vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.css').'">
+        <!-- CHOSEN-->
+        <link rel="stylesheet" href="'. \URL::to('vendor/chosen_v1.2.0/chosen.min.css').'">
+        ';
+
+        $script = '  
+        <script src="'. \URL::to('vendor/bootstrap-filestyle/src/bootstrap-filestyle.js').'"></script> 
+        <script src="'. \URL::to('vendor/chosen_v1.2.0/chosen.jquery.min.js').'"></script>  
+        <!-- TAGS INPUT-->
+        <script src="'. \URL::to('vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') .'"></script>
+
+        <!-- CHOSEN-->
+        <script src="'. \URL::to('vendor/chosen_v1.2.0/chosen.jquery.min.js') .'"></script>
+        <script src="'. \URL::to('app/vendor/ckeditor/ckeditor.js') .'"></script>
+        <script>
+            CKEDITOR.replace( "j_post", {
+                uiColor: "#E1E1E1",
+                skin: "office2013",
+                
+                    filebrowserBrowseUrl      : "'. \URL::to('app/vendor/ckeditor/kcfinder/browse.php?type=files') .'",
+                    filebrowserImageBrowseUrl : "'. \URL::to('app/vendor/ckeditor/kcfinder/browse.php?type=images') .'",
+                    filebrowserVideoBrowseUrl : "'. \URL::to('app/vendor/ckeditor/kcfinder/browse.php?type=videos') .'",
+                    filebrowserFlashBrowseUrl : "'. \URL::to('app/vendor/ckeditor/kcfinder/browse.php?type=flash') .'",
+                    filebrowserUploadUrl      : "'. \URL::to('app/vendor/ckeditor/kcfinder/upload.php?type=files') .'",
+                    filebrowserImageUploadUrl : "'. \URL::to('app/vendor/ckeditor/kcfinder/upload.php?type=images') .'",
+                    filebrowserVideoUploadUrl : "'. \URL::to('app/vendor/ckeditor/kcfinder/upload.php?type=videos') .'",
+                    filebrowserFlashUploadUrl : "'. \URL::to('app/vendor/ckeditor/kcfinder/upload.php?type=flash') .'"
+
+            });
+        </script> 
+
+        <script src="'. \URL::to('app/js/ajax/posts.js') .'"></script>  
+
+        ';
+
+        $tags       = \App\Models\Tags::all(); 
+        $categorias = \App\Models\Categorias::all(); 
+        $posts      = \App\Models\Posts::where('post_id', $id)->join('categorias', 'posts.post_categoria_id', '=', 'categorias.cat_id')->first(); 
+        
+        
+        $dados      = array(
+            'posts'     => $posts,
+            'tags'      => $tags,
+            'categorias'=> $categorias,
+            'style'     => $style,
+            'script'    => $script
+        );        
+        return view('admin.blog.editar-post', $dados);
+
+    }
     
 
     /**

@@ -40,7 +40,7 @@
                   <span>Blog de Notícias</span>
                </a>
                <ul id="blog" class="nav sidebar-subnav collapse">
-                  <li class="{{ \App\library\CoreHelpers::Ativate(['admin/posts', 'admin/novo-post'], 'active') }}">
+                  <li class="{{ \App\library\CoreHelpers::Ativate(['admin/posts', 'admin/novo-post'], 'active') }} {{ (Request::is('admin/editar-post/*') ? 'active' : '') }}">
                      <a href="{{ URL::to('admin/posts') }}" title="Posts">
                         <em></em>
                         <span>Posts</span>
