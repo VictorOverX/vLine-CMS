@@ -81,7 +81,7 @@ $(function(){
 		return false;
 	});
 
-	// Salvando o arquivo
+	/* SALVANDO ARQUIVO SAVE FILE *********************************************************************/
 	$(document).on('click', '.j_editor_save', function(){
 		var dataFile = $(this).attr("id");
 		var dataType = $(this).attr("data-type");
@@ -92,7 +92,8 @@ $(function(){
 			data: {dataFile: dataFile, conteudo: editor.getValue(), dataType: dataType},
 			success: function(e){				
 				if(e === 'sucesso'){
-					jSuccess("Seu Layout foi salvo com sucesso!");
+					noty_success("Seu Layout foi salvo com sucesso!");
+					readFiles();
 				}		
 			}
 		});	
@@ -106,9 +107,9 @@ $(function(){
 			type: 'get',
 			success: function(e){
 				if(e === 'sucesso'){					
-					jSuccess("Seu Layout foi criado com sucesso!");
+					noty_success("Seu Layout foi criado com sucesso!");
 					$("#novoArquivo").modal("hide");
-					Init(); 
+					readFiles();
 				}				
 			}
 		});	
@@ -116,12 +117,14 @@ $(function(){
 	});
 
 
-	/* EXCLUINDO ***********************************************************/
+	/* EXCLUINDO || DELETE POST ***********************************************************/
 	$(document).on('click', '.j_editor_excluir', function(){
 		$('#excluirArquivo').modal();
 		return false;
 	});
 
+
+	/* EXCLUINDO ***********************************************************/
 	$(document).on('click', '.j_excluir_arquivo', function(){
 		var dataFile = $(this).attr("id");
 		var dataType = $(this).attr("data-type");
@@ -132,16 +135,16 @@ $(function(){
 			data: {dataFile: dataFile, dataType: dataType},
 			success: function(e){				
 				if(e === 'sucesso'){
-					jSuccess("Seu arquivo foi excluido com sucesso!");
+					noty_success("Seu arquivo foi excluido com sucesso!");
 					$("#excluirArquivo").modal("hide");
-					Init();	
+					readFiles();
 					editor.setValue('');
 				}else if(e === 'erro'){
 					noty_default("Desculpe! Ocorreu um erro");
 				}else if(e === 'vazio'){
 					noty_default("Desculpe! Não existe esse arquivo!");
 				}else if(e === 'naodeletar'){
-					noty_default("Desculpe! Você não pode excluir esse arquivo!");
+					noty_error("Desculpe! Você não pode excluir esse arquivo!");
 				}										
 			}
 		});	

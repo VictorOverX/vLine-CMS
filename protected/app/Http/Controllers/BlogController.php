@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tags;
+use App\Models\Posts;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -111,6 +113,10 @@ class BlogController extends Controller
                     $input['post_video'] = VideoID($input['post_video']);
                 }
 
+                if(!isset($input['post_data']) || $input['post_data'] == ''){
+                    $input['post_data'] = date("Y-m-d H:i:s"); // Data
+                }
+
                 $input['created_at']    = date("Y-m-d H:i:s"); // Data
                 $input['post_slug']     = str_slug($input['post_titulo']); // Preparando o slug
 
@@ -192,6 +198,91 @@ class BlogController extends Controller
         );        
         return view('admin.blog.editar-post', $dados);
 
+    }
+
+    /**
+     * EDITANDO POST || EDIT POST
+     *
+     * @return Response
+     */
+    public function editandoPost()
+    {
+        $id     = \Input::get('id'); // Pega o ID
+        $input  = \Input::except('_token', 'img', 'id'); // Pega todos os campos menos, token, img e id
+
+        if(empty($id)){
+            return 'idvazio'; // Se o id estiver vazio volta erro
+        }else{
+            if($input['post_categoria_id'] == ''){
+                return 'categoriavazia';
+            }else{
+                if($input['post_titulo'] == '' || $input['post_conteudo'] == ''){
+                    return 'camposvazio';
+                }else{
+                    // Preparando o ember do video
+                    if($input['post_video'] != ''){
+                        $input['post_video'] = VideoID($input['post_video']); // Pega o ID do vídeo
+                    } // Se o campo video for diferente de vazio
+
+                    if(!isset($input['post_data']) || $input['post_data'] == ''){
+                        $input['post_data'] = date("Y-m-d H:i:s"); // Data
+                    }
+
+                    $input['created_at']    = date("Y-m-d H:i:s"); // Data
+                    $input['post_slug']     = str_slug($input['post_titulo']); // Preparando o slug
+
+                    // Upload de imagem
+                    $file       = \Input::file('img');
+                    if (!empty($file)) {
+                        // Verificando se existe
+                        $imagem = \App\Models\Posts::where("post_id", $id)->where("post_capa", "!=", '')->first();
+                        if (isset($imagem) && $imagem->post_capa != '' && \File::exists('uploads/' . $imagem->post_capa)) {
+                            \File::delete('uploads/' . $imagem->post_capa);
+                        }
+
+                        // Upload
+                        $upload = new \App\Library\UploadHelpers();
+                        if ($upload->ImageUpload($file)) {
+                            $input['post_capa'] = $upload->NomeArquivo(); // Criando o valor a ser enviado para o banco de dados com o nome e caminho do arquivo
+                        }
+                    } // verifica se o arquivo está vazio
+
+                    // tags
+                    $tags   = \Input::get('post_tags'); // Pega as tags
+                    if(is_array($tags) && count($tags) > 0){
+                        $input['post_tags'] = implode(",", $tags); // Cria uma string com as tags
+                    } // verifica se é um array com maias de um conteudo
+
+                    $create = \App\Models\Posts::where("post_id", $id)->update($input); // Atualizando todas as informações
+                    if($create){
+                        return 'sucesso'; // Retorna sucesso
+                    } // Verifica se obteve sucesso
+                }
+            }
+        }
+    }
+
+    /**
+     * EXCLUIR POST || DELETE POST
+     * Metodo para exclusão de post, recebendo como parametro o id do post
+     * @return Response
+     */
+    public function excluirPost($id)
+    {
+        if(!empty($id)){
+            // Verifica se existe imagem
+            $imagem = \App\Models\Posts::where("post_id", $id)->where("post_capa", "!=", '')->first();
+            if (isset($imagem) && $imagem->post_capa != '' && \File::exists('uploads/' . $imagem->post_capa)) {
+                \File::delete('uploads/' . $imagem->post_capa); // Deletando post
+            }
+
+            $post   = \App\Models\Posts::where("post_id", $id)->delete(); // Excluindo posst
+            if($post){
+                return 'sucesso'; // Retorna sucesso
+            }// verfica se foi deletado
+        }else{
+            return 'erro'; // Retorna erro
+        } // Verifica se o id vem vazio
     }
     
 
@@ -305,46 +396,106 @@ class BlogController extends Controller
         <script src="'. \URL::to('app/js/demo/demo-datatable.js') .'"></script>    
         <script src="'. \URL::to('app/js/ajax/tags.js') .'"></script>       
         ';
+
+        $tags       = Tags::all();
         
         $dados      = array(
+            'tags'      => $tags,
             'style'     => $style,
             'script'    => $script
-        );        
+        ); 
+
         return view('admin.blog.tags', $dados);
     }
 
     /**
-     * NOVA TAG
-     *
+     * NOVA TAG || NEW TAG
+     * Cadastramento de novas tags no sistema
+     * @param Titulo da Tag
      * @return Response
      */
     public function novaTag()
     {
-        $tags = \Input::get("tag_titulo");
-        $tags = explode(",", $tags);
+        $tags = \Input::get("tag_titulo"); // Chega em string com virgulas
+        $tags = explode(",", $tags); // Explode as virgulas e tranforma em um array
 
-        if(is_array($tags))
-        {
-            foreach($tags as $tag)
+        if(\Input::get("tag_titulo") == ''){
+            return 'campovazio';
+        }else{
+            if(is_array($tags))
             {
-                $verTags = \App\Models\Tags::where('tag_titulo', $tag)->first();                
-                if(count($verTags <= 0) ){
-                     \App\Models\Tags::create(array('tag_titulo' => $tag, 'tag_slug' => str_slug($tag), 'created_at' => date("Y-m-d H:i:s")));
+                foreach($tags as $tag)
+                {
+                    $verTags = \App\Models\Tags::where('tag_titulo', $tag)->first();                
+                    if(count($verTags <= 0) ){
+                         \App\Models\Tags::create(array('tag_titulo' => $tag, 'tag_slug' => str_slug($tag), 'created_at' => date("Y-m-d H:i:s")));
+                    }
                 }
+                return 'sucesso';
             }
-            return 'sucesso';
         }
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * DELETANDO TAG || DELETE TAG
      *
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function excluirTags($id)
     {
-        //
+        $tags_first = Tags::where('tag_id', $id)->first();
+        $nova_tag_s = '';
+        $tags_array = array();
+
+        if(empty($id)){
+            return 'campovazio';
+        }else{
+            $posts  = Posts::all();
+            $tags   = array(); 
+            if(count($posts) > 0){
+                foreach($posts as $post){
+
+                    if(strpos($post->post_tags, (string)$tags_first->tag_id) != false || $post->post_tags == (string)$tags_first->tag_id){
+                       
+                        $tags = explode(",", $post->post_tags); 
+                        if(count($tags) > 0){
+                            foreach($tags as $key => $value){
+                                if($tags_first->tag_id != $value){
+                                    array_push($tags_array, $value);
+                                }
+                            }
+
+                            $nova_tag_s = implode(",", $tags_array);
+                        } 
+
+                        //Atualizando as tags
+                        Posts::where('post_id', $post->post_id)->update(array('post_tags' => $nova_tag_s));
+
+                        $nova_tag_s = '';
+                        $tags_array = array(); 
+                        $tags       = array();                          
+                    }
+                }
+            }
+           // Apagando a tag
+            
+           if( Tags::where('tag_id', $id)->delete() ){
+             return 'sucesso';
+           }
+        }
+    }
+
+    /**
+     * LENDO TAG || READ TAG
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function lendoTags($id)
+    {
+        $tags = Tags::where('tag_id', $id)->first();
+        return \Response::json($tags);
     }
 
     /**

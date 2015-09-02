@@ -54,6 +54,7 @@
 					if(e === 'sucesso'){
 						$('#progresso').empty();
 						noty_success("Seu Layout foi carregado com sucesso!");
+						
 					}else if(e === 'formatoinvalido'){
 						noty_default("Desculpe! Tipo de arquivo invalido!");
 					}else if(e === 'erro'){

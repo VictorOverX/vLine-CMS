@@ -4,6 +4,7 @@
 <h3>Modulos</h3>
 <ul>
  	<li>Gerenciador CMS</li>
+ 	<li>Gerenciador de BLOG</li>
 	<li>Gestão de usuário CMS</li>
 </ul>
  
@@ -34,6 +35,7 @@ Para instalar é muito simples, basta subir para seu servidor de hospedagem ou l
 	<li>Laravel 5.1</li>
 	<li>jQuery</li>
 	<li>JavaScript</li>
+	<li>Bootstrap 3</li>
 </ul>
  
 <h3>Criadores</h3>
