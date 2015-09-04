@@ -40,5 +40,19 @@ class RouteServiceProvider extends ServiceProvider
         $router->group(['namespace' => $this->namespace], function ($router) {
             require app_path('Http/routes.php');
         });
+
+        $router->filter('authuser', function(){
+            if(!\Auth::check())
+            {
+                return redirect()->guest('login');
+            }
+        });
+
+        $router->filter('filtername', function($route, $request, $value)
+        {
+            $array = explode('-',$value); // use - for delimiter
+            return $array;
+            // do whatever here
+        });
     }
 }

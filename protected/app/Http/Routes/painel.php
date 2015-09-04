@@ -1,3 +1,3 @@
 <?php
 
-Route::resource('painel', 'PainelController'); // CONTROLLER DO PAINEL || CONTROLLER PANEL
+Route::get('/', 'PainelController@index'); // CONTROLLER DO PAINEL || CONTROLLER PANEL

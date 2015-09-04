@@ -21,6 +21,8 @@
       <div class="block-center mt-xl wd-xl">
          <div class="panel panel-dark panel-flat">            
             <div id="j_painel" class="panel-body">
+               @if (\Session::has('message-error')) <div class="alert alert-danger text-center">{{ \Session::get('message-error') }}</div> @endif 
+
                <p id="noty" class="text-center pv">LOGUE PARA CONTINUAR</p> 
                   {!! Form::open(['id' => 'j_login', 'method' => 'post', 'class' => 'mb-lg', 'role' => 'form']) !!} 
                   <div class="form-group has-feedback">

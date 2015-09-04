@@ -13,7 +13,7 @@ $(function(){
 	        	{
 	        		$('#noty').empty().html('<div role="alert" class="alert alert-success">Aguarde... iremos redirecioná-lo!</div>');
 	        		removeSpinners('#j_painel');
-	        		$(location).attr('href', baseUrl() + 'admin/painel');
+	        		$(location).attr('href', baseUrl() + 'admin/');
 	        	}
 	        	else if(e === 'erro')
 	        	{

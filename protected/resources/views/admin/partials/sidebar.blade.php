@@ -24,8 +24,8 @@
             <li class="nav-heading ">
                <span>Navegação</span>
             </li>
-            <li class="{{ \App\library\CoreHelpers::Ativate("admin/painel", "active") }}">
-               <a href="{{ URL::to('admin/painel') }}" title="Dashboard">
+            <li class="{{ \App\library\CoreHelpers::Ativate("admin", "active") }}">
+               <a href="{{ URL::to('admin') }}" title="Dashboard">
                   <em class="icon-home2"></em>
                   <span>Dashboard</span>
                </a>               
