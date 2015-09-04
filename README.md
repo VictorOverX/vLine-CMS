@@ -1,6 +1,20 @@
 # vLINE CMS
 <small> Sistema <strong>CMS</strong> de site, com módulos administráveis para diversas funcionalidades.</small>
  
+ > Estado Atual do Package
+
+[![Build Status](https://travis-ci.org/artesaos/defender.svg?branch=develop)](https://github.com/VictorOverX/vLine-CMS)
+[![Code Climate](https://codeclimate.com/github/artesaos/defender/badges/gpa.svg)](https://github.com/VictorOverX/vLine-CMS)
+[![StyleCI](https://styleci.io/repos/31179362/shield)](https://styleci.io/repos/31179362)
+
+> Estatísticas
+
+[![Latest Stable Version](https://poser.pugx.org/artesaos/defender/v/stable.svg)](https://github.com/VictorOverX/vLine-CMS)
+[![Latest Unstable Version](https://poser.pugx.org/artesaos/defender/v/unstable.svg)](https://github.com/VictorOverX/vLine-CMS) [![License](https://poser.pugx.org/artesaos/defender/license.svg)](https://github.com/VictorOverX/vLine-CMS)
+[![Total Downloads](https://poser.pugx.org/artesaos/defender/downloads.svg)](https://github.com/VictorOverX/vLine-CMS)
+[![Monthly Downloads](https://poser.pugx.org/artesaos/defender/d/monthly.png)](https://github.com/VictorOverX/vLine-CMS)
+
+
 <h3>Modulos</h3>
 <ul>
  	<li>Gerenciador CMS</li>
@@ -16,19 +30,6 @@
 	<li><strong>Demo</strong><a href=""></a> </li>
 	<li><strong>Vídeos</strong><a href=""></a> </li>
 </ul>
-
-<h3>Instalação</h3>
-Para instalar é muito simples, basta subir para seu servidor de hospedagem ou local, configurar o seu <strong>.env</strong> e rodar as migrations, para quem não sabe como configurar uma aplicação em laravel, clique no link acima com o tutorial passo a passo.
-
-<h3>Packages</h3>
-
-<h4>Portfolio - Instalação</h4>
-<p>
-	1ª - Copie o modulo para dentro da pasta <strong>packages/LineXTI</strong>.<br/>
-	2ª - Em seguida adicione em seu <strong>composer.json</strong> em <strong>psr-4</strong> a linha <code> "LineXTI\\Portfolio\\": "packages/LineXTI/Portfolio/src"</code>. <br/>
-	3ª - Agora rode o comando <code>composer dump-autoload</code>, para finalizar, em seu terminal <code>php artisan vender:publish</code>.<br/>
-	4ª - Por ultimo va em <strong>config/app.php</strong>, procure a linha <strong>providers</strong> e adicione <code>LineXTI\Portfolio\PortfolioServiceProvider::class,</code>.<br/>
-</p>
 
 <h3>Tecnologias</h3>
 <ul>
