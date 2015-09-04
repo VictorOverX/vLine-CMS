@@ -1,18 +1,5 @@
 # vLINE CMS
 <small> Sistema <strong>CMS</strong> de site, com módulos administráveis para diversas funcionalidades.</small>
- 
- > Estado Atual do Package
-
-[![Build Status](https://travis-ci.org/artesaos/defender.svg?branch=develop)](https://github.com/VictorOverX/vLine-CMS)
-[![Code Climate](https://codeclimate.com/github/artesaos/defender/badges/gpa.svg)](https://github.com/VictorOverX/vLine-CMS)
-
-> Estatísticas
-
-[![Latest Stable Version](https://poser.pugx.org/artesaos/defender/v/stable.svg)](https://github.com/VictorOverX/vLine-CMS)
-[![Latest Unstable Version](https://poser.pugx.org/artesaos/defender/v/unstable.svg)](https://github.com/VictorOverX/vLine-CMS) [![License](https://poser.pugx.org/artesaos/defender/license.svg)](https://github.com/VictorOverX/vLine-CMS)
-[![Total Downloads](https://poser.pugx.org/artesaos/defender/downloads.svg)](https://github.com/VictorOverX/vLine-CMS)
-[![Monthly Downloads](https://poser.pugx.org/artesaos/defender/d/monthly.png)](https://github.com/VictorOverX/vLine-CMS)
-
 
 <h3>Modulos</h3>
 <ul>
