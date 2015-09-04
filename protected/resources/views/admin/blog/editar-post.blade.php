@@ -49,7 +49,7 @@
 								</div>
 								<div class="col-md-6">
 									<label>Tags</label>
-									<select name="post_tags[]" multiple class="chosen-select form-control" required>
+									<select name="post_tags[]" multiple class="chosen-select form-control" novalidate>
 										<?php $todasTags = explode(",", $post->post_tags); $i = 0; ?>
 										@if(count($tags) > 0)
 											@foreach($tags as $tag)

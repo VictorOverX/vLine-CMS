@@ -12,12 +12,16 @@
 	Route::get('comentarios', 		'BlogController@comentarios'); // VIEW PARA TODOS COMENTARIOS || OPEN VIEW FOR ALL COMMENTS
 
 	// CATEGORIAS
-	Route::get('categorias', 		'BlogController@categorias'); // ABRE VIEW PARA CATEGORIAS ||  VIEW FOR ALL CATEGORY
-	Route::get('nova-categoria',	'BlogController@novaCategoria'); // CADASTRAR NOVA CATEGORIA || CREATING NEW CATEGORY
-	
+	Route::get('categorias', 			'BlogController@categorias'); // ABRE VIEW PARA CATEGORIAS ||  VIEW FOR ALL CATEGORY
+	Route::get('nova-categoria',		'BlogController@novaCategoria'); // CADASTRAR NOVA CATEGORIA || CREATING NEW CATEGORY
+	Route::get('lendo/categoria/{id}',  'BlogController@lendoCategoria')->where(array('id' => '[0-9]+')); 
+	Route::get('excluir/categoria/{id}','BlogController@excluirCategoria')->where(array('id' => '[0-9]+'));
+	Route::get('editar/categoria', 		'BlogController@editarCategoria');
+
 	// TAGS
 	Route::get('tags', 				'BlogController@tags'); // ABRE VIEW TAGS || OPEN VIEW TAGS
 	Route::get('nova-tag', 			'BlogController@novaTag'); // CADASTRAR NOVA TAG || CREATING NEW TAG
 	Route::get('excluir/tag/{id}',  'BlogController@excluirTags')->where(array('id' => '[0-9]+')); 
 	Route::get('lendo/tag/{id}',  	'BlogController@lendoTags')->where(array('id' => '[0-9]+')); 
+	Route::get('editar/tag', 		'BlogController@editarTag');
 	

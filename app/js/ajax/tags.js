@@ -11,6 +11,8 @@
 						noty_success("Tags criadas com sucesso.", true);
 					}else if(e === 'campovazio'){
 						noty_default("Desculpe! Você tem que preencher o campo título!");
+					}else if(e === 'tagexiste'){
+						noty_default("Desculpe! Essa tag já existe em nosso banco de dados!");
 					}				
 				}
 			});			
@@ -42,6 +44,23 @@
 			return false;
 		}); 
 
+		$(document).on('submit', '#j_editarTag', function(){
+			$(this).ajaxSubmit({
+				url: baseUrl() + 'admin/editar/tag',
+				type: 'get',				
+				success: function(e){
+					if(e === 'sucesso'){
+						noty_success("Tags atualizada com sucesso.", true);
+					}else if(e === 'campovazio'){
+						noty_error("Desculpe! Ocorreu um erro!");
+					}else if(e === 'tagexiste'){
+						noty_default("Desculpe! Essa tag já existe em nosso banco de dados!");
+					}
+				}
+			});
+			return false;
+		});
+
 		/* EXCLUINDO TAG || DELETE TAG ***************************************************/
 		$(document).on('click', '.j_excluir_tags', function(){			
 			$('.j_excluir_accept').attr("id", $(this).attr("id")); // Passando id pela modal
@@ -58,6 +77,8 @@
 						noty_success("Tags excluida com sucesso.", true);
 					}else if(e === 'campovazio'){
 						noty_error("Desculpe! Ocorreu um erro!");
+					}else if(e === 'semodificacao'){
+						noty_default("Desculpe! Você precisa fazer alguma modificação!");
 					}
 				}
 			});

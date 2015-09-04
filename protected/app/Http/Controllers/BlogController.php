@@ -36,8 +36,7 @@ class BlogController extends Controller
         <script src="'. \URL::to('app/js/ajax/posts.js') .'"></script>       
         ';
 
-        $posts      = \App\Models\Posts::join('categorias', 'posts.post_categoria_id', '=', 'categorias.cat_id')->get(); 
-        
+        $posts      =    \App\Models\Posts::getPostsCategorias();
         $dados      = array(
             'posts'     => $posts,
             'style'     => $style,
@@ -208,7 +207,8 @@ class BlogController extends Controller
     public function editandoPost()
     {
         $id     = \Input::get('id'); // Pega o ID
-        $input  = \Input::except('_token', 'img', 'id'); // Pega todos os campos menos, token, img e id
+        $tagsG  = (is_array(\Input::get('post_tags')) && !in_array("",\Input::get('post_tags')) ? \Input::get('post_tags') : array());
+        $input  = \Input::except('_token', 'img', 'id', 'post_tags'); // Pega todos os campos menos, token, img e id
 
         if(empty($id)){
             return 'idvazio'; // Se o id estiver vazio volta erro
@@ -247,12 +247,16 @@ class BlogController extends Controller
                         }
                     } // verifica se o arquivo está vazio
 
-                    // tags
-                    $tags   = \Input::get('post_tags'); // Pega as tags
-                    if(is_array($tags) && count($tags) > 0){
-                        $input['post_tags'] = implode(",", $tags); // Cria uma string com as tags
-                    } // verifica se é um array com maias de um conteudo
+                    if(count($tagsG) > 0){
+                        // tags
+                        $tags   = $tagsG; // Pega as tags
+                        if(is_array($tags) && count($tags) > 0){
+                            $input['post_tags'] = implode(",", $tags); // Cria uma string com as tags
+                        } // verifica se é um array com maias de um conteudo
+                    }
+                        
 
+                    $input['updated_at'] = date('Y-m-d H:i:s');
                     $create = \App\Models\Posts::where("post_id", $id)->update($input); // Atualizando todas as informações
                     if($create){
                         return 'sucesso'; // Retorna sucesso
@@ -341,10 +345,11 @@ class BlogController extends Controller
         <script src="'. \URL::to('app/js/demo/demo-datatable.js') .'"></script>    
         <script src="'. \URL::to('app/js/ajax/categorias.js') .'"></script>       
         ';
-        
+        $categorias = \App\Models\Categorias::all();
         $dados      = array(
-            'style'     => $style,
-            'script'    => $script
+            'categorias'    => $categorias,
+            'style'         => $style,
+            'script'        => $script
         );        
         return view('admin.blog.categorias', $dados);
     }
@@ -369,7 +374,78 @@ class BlogController extends Controller
         }else{  
             return 'vazio';
         }
+    }
 
+    /**
+     * LENDO CATEGORIA || READ CATEGORIA
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function lendoCategoria($id)
+    {
+        $categorias = \App\Models\Categorias::where('cat_id', $id)->first();
+        return \Response::json($categorias);
+    }
+
+    /**
+     * EDITANDO CATEGORIA || EDIT CATEGORIA
+     *
+     * @param  array POST
+     * @return Response
+     */
+    public function editarCategoria()
+    {
+        $titulo = \Input::get('cat_titulo');
+        $idcatg = \Input::get('cat_id');
+
+        if($titulo == '' || $idcatg == '')
+        {
+            return 'campovazio';
+        }else{
+            if(!empty($titulo)){
+                $ver = \App\Models\Categorias::where('cat_titulo', $titulo)->first();
+                if(count($ver) > 0){
+                    return 'jaexiste';
+                }else{
+                    $dados = array(
+                        'updated_at'    => date("Y-m-d H:i:s"),
+                        'cat_slug'      => str_slug($titulo),
+                        'cat_titulo'    => $titulo
+                    );
+
+                    $update = \App\Models\Categorias::where('cat_id', $idcatg)->update($dados);
+                    if($update){
+                        return 'sucesso';
+                    }
+                }
+            }else{  
+                return 'vazio';
+            }
+        }
+    }
+
+    /**
+     * DELETANDO CATEGORIA || DELETE CATEGORIA
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function excluirCategoria($id)
+    {
+        if($id == ''){
+            return 'erro';
+        }else{
+            $verCatPost = \App\Models\Posts::where('post_categoria_id', $id)->first();
+            if(count($verCatPost) > 0){
+                \App\Models\Posts::where('post_id', $verCatPost->post_id)->update(array('post_categoria_id' => 0));
+            } 
+
+            $categoria   = \App\Models\Categorias::where("cat_id", $id)->delete(); // Excluindo posst
+            if($categoria){
+                return 'sucesso'; // Retorna sucesso
+            }// verfica se foi deletado               
+        }
     }
 
     /**
@@ -427,8 +503,10 @@ class BlogController extends Controller
                 foreach($tags as $tag)
                 {
                     $verTags = \App\Models\Tags::where('tag_titulo', $tag)->first();                
-                    if(count($verTags <= 0) ){
+                    if(count($verTags) <= 0 ){
                          \App\Models\Tags::create(array('tag_titulo' => $tag, 'tag_slug' => str_slug($tag), 'created_at' => date("Y-m-d H:i:s")));
+                    }else{
+                        return 'tagexiste';
                     }
                 }
                 return 'sucesso';
@@ -499,25 +577,33 @@ class BlogController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * EDITAR TAG || EDIT TAG
      *
-     * @param  Request  $request
-     * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function editarTag()
     {
-        //
-    }
+        $id     = \Input::get('tag_id');
+        $tag    = \Input::get('tag_titulo');
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
+        if($id == '' || $tag == ''){
+            return 'campovazio';
+        }else{
+            $verTags = \App\Models\Tags::where('tag_titulo', $tag)->first();                
+                if(count($verTags) <= 0 ){
+                      $dados = array(
+                    'tag_titulo' => $tag,
+                    'tag_slug'   => str_slug($tag),
+                    'updated_at' => date('Y-m-d H:i:s')      
+                );
+                if(Tags::where('tag_id', $id)->update($dados)){
+                    return 'sucesso';
+                }else{
+                    return 'semodificacao';
+                }
+            }else{
+                return 'tagexiste';
+            }
+        }
     }
 }

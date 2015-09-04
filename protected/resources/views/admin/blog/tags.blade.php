@@ -11,7 +11,7 @@
 			</div>
 		</div>
 
-		<div class="panel panel-default animated bounce">			
+		<div class="panel panel-default animated pulse">			
 			<div class="panel-body">
 				<table id="datatable1" class="table table-striped table-hover">
 					<thead>

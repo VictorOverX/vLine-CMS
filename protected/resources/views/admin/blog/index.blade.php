@@ -1,6 +1,6 @@
 @extends('admin.app')
 @section('title', 'Posts')
-@section('descricao', 'Sistema de publicação')
+@section('descricao', 'Sistema gerenciamento de posts')
 @section('content')
 
 <div class="row">
@@ -38,7 +38,13 @@
 										@endif
 									</td>
 									<td>{{ $post->post_titulo }}</td>
-									<td>{{ $post->cat_titulo }}</td>
+									<?php 
+										if($post->post_categoria_id == 0){
+											echo '<td>Todas as Categorias</td>';
+										}else{
+											echo '<td>'.$post->cat_titulo.'</td>';
+										}
+									?>
 									<td>{{ $post->post_slug }}</td>
 									<td>
 										<?php 

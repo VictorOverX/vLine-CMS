@@ -46,7 +46,7 @@
 								</div>
 								<div class="col-md-6">
 									<label>Tags</label>
-									<select name="post_tags[]" multiple class="chosen-select form-control" required>
+									<select name="post_tags[]" multiple class="chosen-select form-control" novalidate>
 										@if(count($tags) > 0)
 										@foreach($tags as $tag)
 										<option value="{{$tag->tag_id}}">{{$tag->tag_titulo}}</option>
