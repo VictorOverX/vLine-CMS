@@ -5,7 +5,6 @@
 
 [![Build Status](https://travis-ci.org/artesaos/defender.svg?branch=develop)](https://github.com/VictorOverX/vLine-CMS)
 [![Code Climate](https://codeclimate.com/github/artesaos/defender/badges/gpa.svg)](https://github.com/VictorOverX/vLine-CMS)
-[![StyleCI](https://styleci.io/repos/31179362/shield)](https://styleci.io/repos/31179362)
 
 > Estatísticas
 
