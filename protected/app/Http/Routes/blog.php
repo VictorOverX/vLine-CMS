@@ -9,7 +9,8 @@
 	Route::get('excluir-post/{id}', 'BlogController@excluirPost')->where(array('id' => '[0-9]+')); 
 
 	// COMENTARIOS
-	Route::get('comentarios', 		'BlogController@comentarios'); // VIEW PARA TODOS COMENTARIOS || OPEN VIEW FOR ALL COMMENTS
+	Route::get('comentarios', 			'BlogController@comentarios'); // VIEW PARA TODOS COMENTARIOS || OPEN VIEW FOR ALL COMMENTS
+	Route::get('mudar/tipo-mensagem', 	'BlogController@mudarTipo');
 
 	// CATEGORIAS
 	Route::get('categorias', 			'BlogController@categorias'); // ABRE VIEW PARA CATEGORIAS ||  VIEW FOR ALL CATEGORY

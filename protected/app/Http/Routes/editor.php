@@ -2,7 +2,7 @@
 
 	Route::get('editor-arquivo', 	'EditorController@editorArquivo'); // ABRE VIEW EDITOR || OPEN VIEW EDIT
 	Route::get('read-file', 		'EditorController@readFile'); // LENDO ARQUIVOS || READ FILE
-	Route::get('save-file', 		'EditorController@saveFile'); // SALVANDO ALTERAÇÕES || SAVE UPDATE FILE
+	Route::post('save-file', 		'EditorController@saveFile'); // SALVANDO ALTERAÇÕES || SAVE UPDATE FILE
 	Route::get('read-all', 			'EditorController@readAllFile'); // LENDO ARQUIVO VIEW || READ FILE VIEW
 	Route::get('new-file', 			'EditorController@novoArquivo'); // NOVO ARQUIVO || NEW FILE
 	Route::get('excluir-file', 		'EditorController@excluirArquivo'); // APAGAR ARQUIVO || DELETE FILE

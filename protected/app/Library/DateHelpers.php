@@ -132,10 +132,7 @@ class DateHelpers {
             return $hora_completa = $hora . ":" . $minuto . ":" . $segundo;
         elseif(self::$Data == 'S'):
             return $misc = $semana[date("w")] . ", " . date("j") . " de " . $mes[date("n")] . " de " . date("Y");
-        endif;
-        
-        
-        
+        endif;       
         
     }
 

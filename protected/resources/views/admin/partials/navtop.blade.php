@@ -54,9 +54,9 @@
                </a>
             </li>
             <!-- Fullscreen (only desktops)-->
-            <li class="visible-lg">
-               <a href="#" data-toggle-fullscreen="">
-                  <em class="fa fa-expand"></em>
+            <li class="">
+               <a href="{{ URL::to('/') }}" target="_blank">
+                  <em class="fa fa-home"></em>
                </a>
             </li>
             <!-- START Alert menu-->

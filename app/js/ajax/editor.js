@@ -85,11 +85,12 @@ $(function(){
 	$(document).on('click', '.j_editor_save', function(){
 		var dataFile = $(this).attr("id");
 		var dataType = $(this).attr("data-type");
+		var token 	 = $("#token").attr("content");
 
 		$(this).ajaxSubmit({
 			url: baseUrl() + 'admin/save-file',
-			type: 'get',
-			data: {dataFile: dataFile, conteudo: editor.getValue(), dataType: dataType},
+			type: 'post',
+			data: {dataFile: dataFile, conteudo: editor.getValue(), dataType: dataType,  _token: token},
 			success: function(e){				
 				if(e === 'sucesso'){
 					noty_success("Seu Layout foi salvo com sucesso!");

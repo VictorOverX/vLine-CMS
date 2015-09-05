@@ -37,7 +37,7 @@
 											<img src="{{ urlBase('app/img/bg4.jpg') }}" alt="" class="img-responsive img-circle">
 										@endif
 									</td>
-									<td>{{ $post->post_titulo }}</td>
+									<td data-toggle="tooltip" data-placement="bottom" title="{{ $post->post_titulo }}">{{ str_limit($post->post_titulo, 10) }}</td>
 									<?php 
 										if($post->post_categoria_id == 0){
 											echo '<td>Todas as Categorias</td>';
@@ -45,7 +45,7 @@
 											echo '<td>'.$post->cat_titulo.'</td>';
 										}
 									?>
-									<td>{{ $post->post_slug }}</td>
+									<td data-toggle="tooltip" data-placement="bottom" title="{{ $post->post_slug }}">{{ str_limit($post->post_slug, 10) }}</td>
 									<td>
 										<?php 
 											switch ($post->post_status) {

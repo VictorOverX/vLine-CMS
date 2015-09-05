@@ -139,6 +139,9 @@ class BlogController extends Controller
                     $input['post_tags'] = implode(",", $tags);
                 }
 
+                // Autor
+                $input['post_autor'] = \Auth::user()->id;
+
                 $create = \App\Models\Posts::create($input);
                 if($create){
                     return 'sucesso';
@@ -190,7 +193,7 @@ class BlogController extends Controller
 
         $tags       = \App\Models\Tags::all(); 
         $categorias = \App\Models\Categorias::all(); 
-        $post       = \App\Models\Posts::where('post_id', $id)->join('categorias', 'posts.post_categoria_id', '=', 'categorias.cat_id')->first(); 
+        $post       = \App\Models\Posts::getPostCategoria();
         
         
         $dados      = array(
@@ -260,7 +263,8 @@ class BlogController extends Controller
                         } // verifica se é um array com maias de um conteudo
                     }
                         
-
+                    // Autor
+                    $input['post_autor'] = \Auth::user()->id;
                     $input['updated_at'] = date('Y-m-d H:i:s');
                     $create = \App\Models\Posts::where("post_id", $id)->update($input); // Atualizando todas as informações
                     if($create){
@@ -296,8 +300,8 @@ class BlogController extends Controller
     
 
     /**
-     * COMENTARIOS
-     *
+     * COMENTARIOS || COMMENTS
+     * View para visualização de comentários
      * @return Response
      */
     public function comentarios()
@@ -318,12 +322,37 @@ class BlogController extends Controller
         <script src="'. \URL::to('app/js/demo/demo-datatable.js') .'"></script>    
         <script src="'. \URL::to('app/js/ajax/comentarios.js') .'"></script>       
         ';
+
+        $comentarios = \App\Models\Tipo_comentarios::first();
         
-        $dados      = array(
-            'style'     => $style,
-            'script'    => $script
+        $dados       = array(
+            'comentarios'   => $comentarios,
+            'style'         => $style,
+            'script'        => $script
         );        
         return view('admin.blog.comentarios', $dados);
+    }
+
+    /**
+     * TIPO DE COMENTARIO || TYPE COMMENT
+     * Atuallizar o tipo de comentário || Update type comment
+     * @return Response
+     */
+    public function mudarTipo()
+    {
+        $tipo_comentario    = \Input::get('tcom_tipo');
+
+        $verTipoComentario  = \App\Models\Tipo_comentarios::all();
+        if(count($verTipoComentario) > 0){
+            $idtcom = $verTipoComentario[0]->tcom_id;
+            if(\App\Models\Tipo_comentarios::where('tcom_id', $idtcom)->update(array('tcom_tipo' => $tipo_comentario, 'updated_at' => date('Y-m-d H:i:s')))){
+                return 'atualizado';
+            }
+        }else{
+            if(\App\Models\Tipo_comentarios::create(array('tcom_tipo' => $tipo_comentario, 'created_at' => date('Y-m-d H:i:s')))){
+                return 'sucesso';
+            }
+        }
     }
 
     /**

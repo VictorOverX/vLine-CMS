@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->string('post_titulo');
             $table->date('post_data');
             $table->integer('post_categoria_id')->unsigned();
+            $table->integer('post_autor')->unsigned();
             $table->string('post_tags');
             $table->text('post_conteudo');            
             $table->string('post_capa');
